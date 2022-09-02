@@ -1,5 +1,22 @@
-const Router = require('express').Router()
-const controllers = require('../Controllers/UserController')
-// const middleware = require('../middleware')
+const router = require('express').Router()
+const controllers = require('../controllers')
+const middleware = require('../middleware')
 
-module.exports = Router
+router.get(
+  '/session',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.userControllers.CheckSession
+)
+
+router.post('/sign_up', controllers.userControllers.SignUp)
+router.post('/login', controllers.userControllers.Login)
+
+router.put(
+  '/profile',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.userControllers.ChangePassword
+)
+
+module.exports = router
