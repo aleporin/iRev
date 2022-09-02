@@ -1,0 +1,24 @@
+{
+  "name": "irev",
+  "version": "1.0.0",
+  "description": "## Date: 09/01/2022",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleporin/iRev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleporin/iRev/issues"
+  },
+  "homepage": "https://github.com/aleporin/iRev#readme",
+  "dependencies": {
+    "pg": "^8.8.0",
+    "sequelize": "^6.21.4"
+  }
+}
