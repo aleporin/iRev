@@ -8,14 +8,28 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      User.hasMany(models.Recipes, {
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'author'
+      })
+      User.belongsToMany(models.Recipe, {
+        as: 'recipelist',
+        through: models.SavedRecipe,
+        foreignKey: 'userId'
+      })
     }
   }
   User.init(
     {
-      email: DataTypes.STRING,
-      username: DataTypes.STRING,
-      passwordDigest: DataTypes.STRING
+      email: { type: DataTypes.STRING, allowNull: false },
+      username: { type: DataTypes.STRING, allowNull: false },
+      passwordDigest: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: 'password_digest'
+      }
     },
     {
       sequelize,
