@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      User.hasMany(models.Recipes, {
+      User.hasMany(models.Recipe, {
         foreignKey: 'user_id',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       })
       User.belongsToMany(models.Recipe, {
         as: 'recipelist',
-        through: models.SavedRecipe,
+        through: models.Savedrecipe,
         foreignKey: 'userId'
       })
     }

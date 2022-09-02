@@ -14,12 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE',
         as: 'author'
       })
-      Recipe.belongsTo(models.Category, {
-        foreignKey: 'category_id',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-        as: 'category'
-      })
+
       // Recipe.belongsToMany(models.User, {
       //   as: 'saved_recipes',
       //   through: models.Savedrecipe,
@@ -34,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       recipe_name: { type: DataTypes.STRING, allowNull: false },
       desc: { type: DataTypes.STRING, allowNull: false },
       ingredients: { type: DataTypes.STRING, allowNull: false },
+      category: { type: DataTypes.STRING, allowNull: false },
       cook_time: { type: DataTypes.INTEGER, allowNull: false },
       process: { type: DataTypes.STRING, allowNull: false },
       userId: {
@@ -45,16 +41,6 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id'
         },
         field: 'user_id'
-      },
-      categoryId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'categories',
-          key: 'id'
-        },
-        field: 'category_id'
       }
     },
     {

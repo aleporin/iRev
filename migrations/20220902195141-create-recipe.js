@@ -24,6 +24,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      category: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       cook_time: {
         type: Sequelize.INTEGER,
         allowNull: false
@@ -41,16 +45,6 @@ module.exports = {
           key: 'id'
         },
         field: 'user_id'
-      },
-      categoryId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'categories',
-          key: 'id'
-        },
-        field: 'category_id'
       },
       createdAt: {
         allowNull: false,
