@@ -4,6 +4,7 @@ const controller = require('../Controllers/RecipeController')
 
 router.get('/', controller.GetAllRecipes)
 router.get('/user/:userId', controller.GetUserRecipes)
+router.get('/:recipeId', controller.GetRecipesById)
 router.post('/create/:user_id', controller.CreateRecipe)
 
 module.exports = router
