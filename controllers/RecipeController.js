@@ -67,9 +67,23 @@ const CreateRecipe = async (req, res) => {
   }
 }
 
+const UpdateRecipe = async (req, res) => {
+  try {
+    const recipeId = parseInt(req.params.recipeId)
+    const updatedRecipe = await Recipe.update(req.body, {
+      where: { id: recipeId },
+      returning: true
+    })
+    res.send(updatedRecipe)
+  } catch (e) {
+    throw e
+  }
+}
+
 module.exports = {
   GetAllRecipes,
   CreateRecipe,
   GetUserRecipes,
-  GetRecipesById
+  GetRecipesById,
+  UpdateRecipe
 }
