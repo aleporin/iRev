@@ -80,10 +80,26 @@ const UpdateRecipe = async (req, res) => {
   }
 }
 
+const DeleteRecipe = async (req, res) => {
+  try {
+    await Recipe.destroy({
+      where: { id: req.params.recipeId }
+    })
+    res.send({
+      msg: 'Recipe Has Been Deleted!',
+      payload: req.params.recipeId,
+      status: 'Ok'
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   GetAllRecipes,
   CreateRecipe,
   GetUserRecipes,
   GetRecipesById,
-  UpdateRecipe
+  UpdateRecipe,
+  DeleteRecipe
 }
