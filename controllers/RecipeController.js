@@ -1,3 +1,4 @@
+const { parse } = require('dotenv')
 const { Recipe, Savedrecipe, User } = require('../models')
 
 const GetAllRecipes = async (req, res) => {
@@ -17,6 +18,26 @@ const GetAllRecipes = async (req, res) => {
   }
 }
 
+const CreateRecipe = async (req, res) => {
+  try {
+    let userId = parseInt(req.params.user_id)
+    const createdRecipe = await Recipe.create({
+      recipe_name: req.body.recipe_name,
+      desc: req.body.desc,
+      ingredients: req.body.ingredients,
+      category: req.body.category,
+      cook_time: req.body.cook_time,
+      process: req.body.process,
+      image: req.body.image,
+      userId: userId
+    })
+    res.send(createdRecipe)
+  } catch (e) {
+    throw e
+  }
+}
+
 module.exports = {
-  GetAllRecipes
+  GetAllRecipes,
+  CreateRecipe
 }
