@@ -17,6 +17,21 @@ const GetAllRecipes = async (req, res) => {
     throw e
   }
 }
+const GetUserRecipes = async (req, res) => {
+  try {
+    const recipe = await Recipe.findAll({
+      where: { userId: req.params.userId },
+      include: {
+        model: User,
+        as: 'author',
+        attributes: ['username']
+      }
+    })
+    res.send(recipe)
+  } catch (e) {
+    throw e
+  }
+}
 
 const CreateRecipe = async (req, res) => {
   try {
@@ -39,5 +54,6 @@ const CreateRecipe = async (req, res) => {
 
 module.exports = {
   GetAllRecipes,
-  CreateRecipe
+  CreateRecipe,
+  GetUserRecipes
 }
