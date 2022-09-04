@@ -64,11 +64,39 @@ const CreateCocktail = async (req, res) => {
   }
 }
 
+const UpdateCocktail = async (req, res) => {
+  try {
+    const cocktailId = parseInt(req.params.cocktailId)
+    const updatedCocktail = await Cocktail.update(req.body, {
+      where: { id: cocktailId },
+      returning: true
+    })
+    res.send(updatedCocktail)
+  } catch (e) {
+    throw e
+  }
+}
+
+const DeleteCocktail = async (req, res) => {
+  try {
+    await Cocktail.destroy({
+      where: { id: req.params.cocktailId }
+    })
+    res.send({
+      msg: 'Cocktail Has Been Deleted!',
+      payload: req.params.cocktailId,
+      status: 'Ok'
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   CreateCocktail,
   GetAllCocktails,
   GetUserCocktails,
-  GetCocktailsById
-  // UpdateCocktail,
-  // DeleteCocktail
+  GetCocktailsById,
+  UpdateCocktail,
+  DeleteCocktail
 }
