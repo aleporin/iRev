@@ -1,5 +1,4 @@
-const { parse } = require('dotenv')
-const { Recipe, Savedrecipe, User } = require('../models')
+const { Recipe, User } = require('../models')
 
 const GetAllRecipes = async (req, res) => {
   try {
