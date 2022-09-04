@@ -8,8 +8,6 @@ const CreateCocktail = async (req, res) => {
       desc: req.body.desc,
       ingredients: req.body.ingredients,
       category: req.body.category,
-      cook_time: req.body.cook_time,
-      process: req.body.process,
       image: req.body.image,
       userId: userId
     })
