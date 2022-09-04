@@ -1,19 +1,40 @@
-import axios from 'axios'
+import Client from './api'
 
-export const BASE_URL = 'https://localhost:3001/api'
+export const LoginUser = async (data) => {
+  try {
+    const res = await Client.post('api/user/login', data)
+    console.log(res)
+    localStorage.setItem('token', res.data.token)
+    return res.data.user
+  } catch (error) {
+    throw error
+  }
+}
 
-const Client = axios.create({ baseURL: BASE_URL })
+export const SignUpUser = async (data) => {
+  try {
+    const res = await Client.post('api/user/sign_up', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
 
-Client.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token')
-    console.log(token)
-    if (token) {
-      config.headers['authorization'] = `Bearer ${token}`
-    }
-    return config
-  },
-  (error) => Promise.reject(error)
-)
+export const UpdatePassword = async (data) => {
+  try {
+    const res = await Client.put('api/user/profile', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
 
-export default Client
+export const CheckSession = async (data) => {
+  try {
+    const res = await Client.get('api/user/session', data)
+    console.log(res.data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
