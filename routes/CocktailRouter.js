@@ -4,7 +4,7 @@ const controller = require('../Controllers/CocktailController')
 
 router.get('/', controller.GetAllCocktails)
 router.get('/user/:userId', controller.GetUserCocktails)
-// router.get('/:cocktailId', controller.GetCocktailsById)
+router.get('/:cocktailId', controller.GetCocktailsById)
 // router.put('/update/:cocktailId', controller.UpdateCocktail)
 // router.delete('/delete/:cocktailId', controller.DeleteCocktail)
 router.post('/create/:user_id', controller.CreateCocktail)

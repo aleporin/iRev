@@ -34,7 +34,7 @@ const GetUserCocktails = async (req, res) => {
 const GetCocktailsById = async (req, res) => {
   try {
     const cocktail = await Cocktail.findAll({
-      where: { id: req.params.CocktailId },
+      where: { id: req.params.cocktailId },
       include: {
         model: User,
         as: 'author',
@@ -67,8 +67,8 @@ const CreateCocktail = async (req, res) => {
 module.exports = {
   CreateCocktail,
   GetAllCocktails,
-  GetUserCocktails
-  // GetCocktailsById,
+  GetUserCocktails,
+  GetCocktailsById
   // UpdateCocktail,
   // DeleteCocktail
 }
