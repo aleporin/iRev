@@ -18,3 +18,12 @@ const CreateCocktail = async (req, res) => {
     throw e
   }
 }
+
+module.exports = {
+  CreateCocktail
+  // GetAllRecipes,
+  // GetUserRecipes,
+  // GetRecipesById,
+  // UpdateRecipe,
+  // DeleteRecipe
+}
