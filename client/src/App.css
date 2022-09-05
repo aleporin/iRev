@@ -1,0 +1,13 @@
+/* food cards */
+.card-wrapper {
+  margin: 4rem 0rem;
+}
+.card-content {
+  min-height: 25rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.card-content img {
+  border-radius: 2rem;
+}
