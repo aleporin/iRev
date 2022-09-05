@@ -11,3 +11,10 @@
 .card-content img {
   border-radius: 2rem;
 }
+
+.card-content p {
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
