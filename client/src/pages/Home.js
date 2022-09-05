@@ -1,5 +1,11 @@
+import Trending from '../components/Trending'
+
 const Home = () => {
-  return <div>Home</div>
+  return (
+    <div>
+      <Trending />
+    </div>
+  )
 }
 
 export default Home

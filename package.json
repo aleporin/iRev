@@ -20,11 +20,13 @@
   },
   "homepage": "https://github.com/aleporin/iRev#readme",
   "dependencies": {
+    "@splidejs/react-splide": "^0.7.8",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "firebase": "^9.9.4",
+    "framer-motion": "^7.2.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
