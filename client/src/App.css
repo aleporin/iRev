@@ -28,3 +28,28 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* search styles */
+
+.search-form {
+  margin: 0rem 20rem;
+  position: relative;
+}
+
+.search-form input {
+  border: none;
+  background-color: gray;
+  font-size: 1.5rem;
+  color: white;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+  width: 100%;
+}
+
+.search-results {
+  display: grid;
+
+  grid-gap: 3rem;
+}
