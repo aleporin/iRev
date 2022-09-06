@@ -7,6 +7,7 @@ import { CheckSession } from './services/Auth'
 import SearchResults from './pages/SearchResults'
 import Home from './pages/Home'
 import RecipeDetails from './pages/RecipeDetails'
+import Nav from './components/Nav'
 
 function App() {
   // user auth
@@ -33,8 +34,8 @@ function App() {
 
   return (
     <div className="app">
+      <Nav />
       <Search />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/searched/:results" element={<SearchResults />} />

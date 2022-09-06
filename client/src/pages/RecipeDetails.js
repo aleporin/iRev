@@ -1,14 +1,16 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch, FaBookmark, FaRegBookmark } from 'react-icons/fa'
 import { useNavigate } from 'react-router'
 import { useParams } from 'react-router-dom'
+import { Bookmark } from '../components/Bookmark'
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
 const RecipeDetails = () => {
   const [recipe, setRecipe] = useState([])
   const [active, setActive] = useState('details')
+
   let { recipeId } = useParams()
 
   const getRecipe = async () => {
@@ -26,8 +28,11 @@ const RecipeDetails = () => {
   return (
     // <div className="recipe-detail">
     <div className="recipe-wrap">
-      <h3>{recipe.title}</h3>
-      <img src={recipe.image} />
+      <div className="title-image">
+        <h3>{recipe.title}</h3>
+        <img src={recipe.image} />
+        <Bookmark />
+      </div>
 
       <div className="button-wrap">
         <button
@@ -66,8 +71,8 @@ const RecipeDetails = () => {
       )}
       {active === 'recipe' && (
         <ul>
-          {recipe.analyzedInstructions.steps.map((instruction) => (
-            <li>{instruction.steps}</li>
+          {recipe.analyzedInstructions.map((instruction) => (
+            <li>{instruction.steps.step}</li>
           ))}
         </ul>
       )}

@@ -8,7 +8,6 @@ const Home = () => {
     <div>
       <Pasta />
       <Trending />
-      <RecipeDetails />
     </div>
   )
 }

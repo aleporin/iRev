@@ -5,7 +5,7 @@
 }
 
 body {
-  margin: 0% 10%;
+  margin: 0% 15%;
   /* width: 100vw; */
   /* height: 100vh; */
 }
@@ -22,6 +22,7 @@ body {
 
 .card-content img {
   border-radius: 2rem;
+  width: 100%;
 }
 
 .card-content p {
@@ -34,7 +35,7 @@ body {
 /* search styles */
 
 .search-form {
-  margin: 0rem 20rem;
+  margin: 0rem 30rem;
   position: relative;
 }
 
@@ -77,8 +78,12 @@ body {
   margin-top: 50px;
 }
 .recipe-wrap img {
-  width: 40%;
-  height: 30%;
+  height: 300px;
+  width: 350px;
+  object-fit: cover;
+  border-width: 1px;
+  border-color: white;
+  border-radius: 15px;
 }
 .recipe-detail h3 {
   margin-bottom: 2rem;
@@ -116,3 +121,8 @@ body {
   width: 50%;
   padding-top: 30px;
 }
+
+.title-image {
+}
+
+/*  nav bar */
