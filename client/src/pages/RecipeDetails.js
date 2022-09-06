@@ -8,14 +8,13 @@ const API_KEY = process.env.REACT_APP_API_KEY
 
 const RecipeDetails = () => {
   const [recipe, setRecipe] = useState([])
+  const [active, setActive] = useState('details')
   let { recipeId } = useParams()
-  console.log(recipeId)
 
   const getRecipe = async () => {
     console.log(recipeId)
     const response = await axios.get(
       `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`
-      // `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`
     )
     setRecipe(response.data)
   }
@@ -25,9 +24,54 @@ const RecipeDetails = () => {
   }, [recipeId])
 
   return (
-    <div>
+    // <div className="recipe-detail">
+    <div className="recipe-wrap">
       <h3>{recipe.title}</h3>
       <img src={recipe.image} />
+
+      <div className="button-wrap">
+        <button
+          className={active === 'details' ? 'active' : ''}
+          id="details-button"
+          onClick={() => setActive('details')}
+        >
+          Details
+        </button>
+        <button
+          id="details-button"
+          className={active === 'ingredients' ? 'active' : ''}
+          onClick={() => setActive('ingredients')}
+        >
+          Ingredients
+        </button>
+        <button
+          id="details-button"
+          className={!active === 'recipe' ? 'active' : ''}
+          onClick={() => setActive('recipe')}
+        >
+          Recipe
+        </button>
+      </div>
+      {active === 'details' && (
+        <div className="summary-wrap">
+          <p dangerouslySetInnerHTML={{ __html: recipe.summary }}></p>
+        </div>
+      )}
+      {active === 'ingredients' && (
+        <ul>
+          {recipe.extendedIngredients.map((ingrendient) => (
+            <li>{ingrendient.original}</li>
+          ))}
+        </ul>
+      )}
+      {active === 'recipe' && (
+        <ul>
+          {recipe.analyzedInstructions.steps.map((instruction) => (
+            <li>{instruction.steps}</li>
+          ))}
+        </ul>
+      )}
+      {/* <p>{recipe.instructions}</p> */}
     </div>
   )
 }
