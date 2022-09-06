@@ -1,15 +1,11 @@
 import './App.css'
-
-import Pages from './pages/Pages'
 import Search from './components/Search'
 import { Route, Routes } from 'react-router-dom'
-
 import { useState, useEffect } from 'react'
-// import { Route, Routes } from 'react-router-dom'
 
 import { CheckSession } from './services/Auth'
-
 import SearchResults from './pages/SearchResults'
+import Home from './pages/Home'
 
 function App() {
   // user auth
@@ -37,8 +33,9 @@ function App() {
   return (
     <div className="app">
       <Search />
-      <Pages />
+
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/searched/:results" element={<SearchResults />} />
       </Routes>
     </div>

@@ -38,7 +38,7 @@ body {
 
 .search-form input {
   border: none;
-  background-color: gray;
+  background-color: blue;
   font-size: 1.5rem;
   color: white;
   padding: 1rem 3rem;
@@ -50,6 +50,5 @@ body {
 
 .search-results {
   display: grid;
-
   grid-gap: 3rem;
 }
