@@ -9,12 +9,15 @@ const API_KEY = process.env.REACT_APP_API_KEY
 const RecipeDetails = () => {
   const [recipe, setRecipe] = useState([])
   let { recipeId } = useParams()
+  console.log(recipeId)
 
-  const getRecipe = async (recipeId) => {
+  const getRecipe = async () => {
+    console.log(recipeId)
     const response = await axios.get(
       `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`
+      // `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`
     )
-    setRecipe(response.data.results)
+    setRecipe(response.data)
   }
 
   useEffect(() => {
