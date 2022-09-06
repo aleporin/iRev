@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -34,10 +35,12 @@ const Trending = () => {
         >
           {trending.map((recipe) => (
             <SplideSlide>
-              <div key={recipe.title} className="card-content">
-                <p>{recipe.title}</p>
-                <img src={recipe.image} />
-              </div>
+              <Link to={`/recipe/details/${recipe.id}`}>
+                <div key={recipe.title} className="card-content">
+                  <p>{recipe.title}</p>
+                  <img src={recipe.image} />
+                </div>
+              </Link>
             </SplideSlide>
           ))}
         </Splide>

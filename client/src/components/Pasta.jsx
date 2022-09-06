@@ -2,6 +2,7 @@ import { animationControls } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const API_KEY = process.env.REACT_APP_API_KEY
@@ -34,10 +35,12 @@ const Pasta = () => {
         >
           {pasta.map((recipe) => (
             <SplideSlide>
-              <div key={recipe.title} className="card-content">
-                <p>{recipe.title}</p>
-                <img src={recipe.image} />
-              </div>
+              <Link to={`/recipe/details/${recipe.id}`}>
+                <div key={recipe.title} className="card-content">
+                  <p>{recipe.title}</p>
+                  <img src={recipe.image} />
+                </div>
+              </Link>
             </SplideSlide>
           ))}
         </Splide>

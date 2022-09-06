@@ -10,7 +10,7 @@ const Search = () => {
 
   const getSearchResults = async (event) => {
     event.preventDefault()
-    navigate('/searched/' + searchQuery)
+    navigate(`/searched/${searchQuery}`)
     setSearchQuery('')
     toggleSearched(true)
   }

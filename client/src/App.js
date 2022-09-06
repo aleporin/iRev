@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { CheckSession } from './services/Auth'
 import SearchResults from './pages/SearchResults'
 import Home from './pages/Home'
+import RecipeDetails from './pages/RecipeDetails'
 
 function App() {
   // user auth
@@ -37,6 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/searched/:results" element={<SearchResults />} />
+        <Route path="/recipe/details/:recipeId" element={<RecipeDetails />} />
       </Routes>
     </div>
   )
