@@ -26,3 +26,12 @@ export const GetRecipeByUser = async (userId) => {
     throw e
   }
 }
+
+export const CreateNewRecipe = async (data, userId) => {
+  try {
+    const res = await Client.post(`/recipe/create/${userId}`, data)
+    return res.data
+  } catch (e) {
+    throw e
+  }
+}

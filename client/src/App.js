@@ -12,6 +12,7 @@ import { Profile } from './pages/Profile'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Sidebar from './components/Sidebar'
+import CreateRecipe from './pages/CreateRecipe'
 
 function App() {
   // user auth
@@ -56,6 +57,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/searched/:results" element={<SearchResults />} />
         <Route path="/recipe/details/:recipeId" element={<RecipeDetails />} />
+        <Route path="/recipe/details/:recipeId" element={<CreateRecipe />} />
         <Route path="/register" element={<Register />} />
       </Routes>
     </div>
