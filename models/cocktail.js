@@ -28,7 +28,10 @@ module.exports = (sequelize, DataTypes) => {
       image: { type: DataTypes.STRING, allowNull: false },
       cocktail_name: { type: DataTypes.STRING, allowNull: false },
       desc: { type: DataTypes.STRING, allowNull: false },
-      ingredients: { type: DataTypes.STRING, allowNull: false },
+      ingredients: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false
+      },
       process: { type: DataTypes.STRING, allowNull: false },
       userId: {
         type: DataTypes.INTEGER,
