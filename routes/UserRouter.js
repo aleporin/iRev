@@ -9,7 +9,7 @@ router.get(
   controllers.userControllers.CheckSession
 )
 
-router.post('/sign_up', controllers.userControllers.SignUp)
+router.post('/register', controllers.userControllers.SignUp)
 router.post('/login', controllers.userControllers.Login)
 
 router.put(

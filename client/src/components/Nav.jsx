@@ -4,7 +4,7 @@ import { FaBars, FaTimes } from 'react-icons/fa'
 import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react'
 
-const Nav = () => {
+const Nav = ({ authenticated, user }) => {
   const [nav, setNav] = useState(false)
 
   const styles = {
@@ -13,7 +13,7 @@ const Nav = () => {
     activeclassname: 'underline text-gray-900'
   }
 
-  const links = [
+  const authLinks = [
     {
       className: styles.className,
       activeclassname: styles.activeclassname,
@@ -25,10 +25,66 @@ const Nav = () => {
       activeclassname: styles.activeclassname,
       to: '/profile',
       name: 'Profile'
+    },
+    {
+      className: styles.className,
+      activeclassname: styles.activeclassname,
+      to: '/',
+      name: 'Create Recipe'
+    },
+    {
+      className: styles.className,
+      activeclassname: styles.activeclassname,
+      to: '/',
+      name: 'Logout'
     }
   ]
 
-  return (
+  const notAuthLinks = [
+    {
+      className: styles.className,
+      activeclassname: styles.activeclassname,
+      to: '/',
+      name: 'Home'
+    },
+    {
+      className: styles.className,
+      activeclassname: styles.activeclassname,
+      to: '/login',
+      name: 'Login'
+    }
+  ]
+
+  let isAuthenticated
+  if (user) {
+    isAuthenticated = (
+      <div className="nav-wrap">
+        <Search />
+        <div onClick={() => setNav(!nav)} className="menu-wrap">
+          {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
+        </div>
+
+        {nav && (
+          <div>
+            <ul className="nav-link-wrap">
+              {authLinks.map((link) => (
+                <Link
+                  className={link.className}
+                  activeclassname={link.activeclassname}
+                  to={link.to}
+                  key={authLinks.name}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  const notAuthenticated = (
     <div className="nav-wrap">
       <Search />
       <div onClick={() => setNav(!nav)} className="menu-wrap">
@@ -38,27 +94,23 @@ const Nav = () => {
       {nav && (
         <div>
           <ul className="nav-link-wrap">
-            {links.map((link) => (
+            {notAuthLinks.map((link) => (
               <Link
                 className={link.className}
                 activeclassname={link.activeclassname}
                 to={link.to}
+                key={notAuthLinks.name}
               >
                 {link.name}
               </Link>
             ))}
-            {/* {links.map(({ to, link }) => (
-              <li key={link.id} className>
-                <Link to={link} smooth duration={300}>
-                  {to}
-                </Link>
-              </li> */}
-            {/* ))} */}
           </ul>
         </div>
       )}
     </div>
   )
+
+  return <div>{authenticated && user ? isAuthenticated : notAuthenticated}</div>
 }
 
 export default Nav

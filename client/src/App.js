@@ -9,6 +9,8 @@ import Home from './pages/Home'
 import RecipeDetails from './pages/RecipeDetails'
 import Nav from './components/Nav'
 import { Profile } from './pages/Profile'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
   // user auth
@@ -35,12 +37,19 @@ function App() {
 
   return (
     <div className="app">
-      <Nav />
+      <Nav authenticated={authenticated} user={user} logOut={logOut} />
       <Routes>
+        <Route
+          path="/login"
+          element={
+            <Login setAuthenticated={setAuthenticated} setUser={setUser} />
+          }
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<Home />} />
         <Route path="/searched/:results" element={<SearchResults />} />
         <Route path="/recipe/details/:recipeId" element={<RecipeDetails />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   )

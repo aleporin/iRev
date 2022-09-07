@@ -1,12 +1,42 @@
 const router = require('express').Router()
 const controller = require('../Controllers/CocktailController')
-// const middleware = require('../middleware')
+const middleware = require('../middleware')
 
-router.get('/', controller.GetAllCocktails)
-router.get('/user/:userId', controller.GetUserCocktails)
-router.get('/:cocktailId', controller.GetCocktailsById)
-router.put('/update/:cocktailId', controller.UpdateCocktail)
-router.delete('/delete/:cocktailId', controller.DeleteCocktail)
-router.post('/create/:user_id', controller.CreateCocktail)
+router.get(
+  '/',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.GetAllCocktails
+)
+router.get(
+  '/user/:userId',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.GetUserCocktails
+)
+router.get(
+  '/:cocktailId',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.GetCocktailsById
+)
+router.put(
+  '/update/:cocktailId',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.UpdateCocktail
+)
+router.delete(
+  '/delete/:cocktailId',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.DeleteCocktail
+)
+router.post(
+  '/create/:user_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.CreateCocktail
+)
 
 module.exports = router
