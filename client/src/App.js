@@ -36,9 +36,14 @@ function App() {
     }
   }, [])
 
+  const logout = () => {
+    setUser(null)
+    localStorage.clear()
+  }
+
   return (
     <div className="app">
-      <Sidebar />
+      <Sidebar logOut={logOut} authenticated={authenticated} user={user} />
       {/* <Nav authenticated={authenticated} user={user} logOut={logOut} /> */}
       <Routes>
         <Route
