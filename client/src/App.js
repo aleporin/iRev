@@ -112,9 +112,9 @@ function App() {
         <Route path="/searched/:results" element={<SearchResults />} />
         <Route path="/recipe/details/:recipeId" element={<RecipeDetails />} />
         <Route
+          path="/createrecipe"
           element={
             <CreateRecipe
-              path="/createrecipe"
               handleRecipeSubmit={handleRecipeSubmit}
               recipeForm={recipeForm}
               handleRecipeChange={handleRecipeChange}

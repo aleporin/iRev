@@ -191,3 +191,10 @@ main {
   border-radius: 3px;
   padding-left: 8px;
 }
+
+/*  */
+
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+}
