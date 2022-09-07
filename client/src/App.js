@@ -11,6 +11,7 @@ import Nav from './components/Nav'
 import { Profile } from './pages/Profile'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Sidebar from './components/Sidebar'
 
 function App() {
   // user auth
@@ -37,7 +38,8 @@ function App() {
 
   return (
     <div className="app">
-      <Nav authenticated={authenticated} user={user} logOut={logOut} />
+      <Sidebar />
+      {/* <Nav authenticated={authenticated} user={user} logOut={logOut} /> */}
       <Routes>
         <Route
           path="/login"

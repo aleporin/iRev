@@ -70,13 +70,12 @@ const RecipeDetails = () => {
         </ul>
       )}
       {active === 'recipe' && (
-        <ul>
-          {recipe.analyzedInstructions.map((instruction) => (
-            <li>{instruction.steps.step}</li>
+        <ol>
+          {recipe.analyzedInstructions[0].steps.map((instruction) => (
+            <li>{instruction.step}</li>
           ))}
-        </ul>
+        </ol>
       )}
-      {/* <p>{recipe.instructions}</p> */}
     </div>
   )
 }

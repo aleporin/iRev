@@ -4,6 +4,7 @@ const middleware = require('../middleware')
 const SignUp = async (req, res) => {
   try {
     const { username, email, password } = req.body
+    console.log(req.body)
     let usernameTaken = await User.findOne({ where: { username: username } })
     if (usernameTaken) {
       res.send({ msg: `${usernameTaken.username} is already taken.` })

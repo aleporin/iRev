@@ -29,7 +29,7 @@ const Nav = ({ authenticated, user }) => {
     {
       className: styles.className,
       activeclassname: styles.activeclassname,
-      to: '/',
+      to: '/create_recipe',
       name: 'Create Recipe'
     },
     {
