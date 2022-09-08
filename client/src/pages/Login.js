@@ -15,7 +15,7 @@ const Login = ({ setUser, setAuthenticated }) => {
     setFormValues({ username: '', password: '' })
     setUser(payload)
     setAuthenticated(true)
-    navigate('/profile')
+    navigate('/')
   }
   return (
     <div className="pagewrap">

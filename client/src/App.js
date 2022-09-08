@@ -55,8 +55,9 @@ function App() {
     process: '',
     image: ''
   })
+  const initialValue = ''
 
-  const [ingredient, setIngredient] = useState('')
+  const [ingredient, setIngredient] = useState(initialValue)
 
   const handleIngredientChange = (e) => {
     setIngredient(e.target.value)
@@ -67,23 +68,28 @@ function App() {
   }
 
   const handleIngredientAdd = (e) => {
+    e.preventDefault()
     let ingredients = recipeForm.ingredients
-    ingredients.push(e.target.value)
+    ingredients.push(ingredient)
     setRecipeForm({ ...recipeForm, ingredients: ingredients })
-    setIngredient('')
+
+    setIngredient(initialValue)
   }
 
-  const handleRecipeSubmit = async (error) => {
+  const handleRecipeSubmit = async (error, userId) => {
     error.preventDefault()
-    await CreateNewRecipe({
-      recipe_name: recipeForm.recipe_name,
-      desc: recipeForm.desc,
-      category: recipeForm.category,
-      ingredients: recipeForm.ingredients,
-      cook_time: recipeForm.cook_time,
-      process: recipeForm.process,
-      image: recipeForm.image
-    })
+    await CreateNewRecipe(
+      {
+        recipe_name: recipeForm.recipe_name,
+        desc: recipeForm.desc,
+        category: recipeForm.category,
+        ingredients: recipeForm.ingredients,
+        cook_time: recipeForm.cook_time,
+        process: recipeForm.process,
+        image: recipeForm.image
+      },
+      userId
+    )
     setRecipeForm({
       recipe_name: '',
       desc: '',
@@ -93,7 +99,7 @@ function App() {
       process: '',
       image: ''
     })
-    navigate('/ingredients')
+    navigate('/')
   }
 
   return (
@@ -118,6 +124,9 @@ function App() {
               handleRecipeSubmit={handleRecipeSubmit}
               recipeForm={recipeForm}
               handleRecipeChange={handleRecipeChange}
+              handleIngredientAdd={handleIngredientAdd}
+              handleIngredientChange={handleIngredientChange}
+              ingredient={ingredient}
             />
           }
         />

@@ -1,13 +1,17 @@
 import { useState } from 'react'
+import Ingredient from '../components/Ingredient'
 
 const CreateRecipe = ({
   handleRecipeSubmit,
   recipeForm,
-  handleRecipeChange
+  handleRecipeChange,
+  handleIngredientChange,
+  ingredient,
+  handleIngredientAdd
 }) => {
   return (
     <div>
-      <form className="recipe-form">
+      <form className="recipe-form" onSubmit={handleRecipeSubmit}>
         <label>Recipe Name</label>
         <input
           onChange={handleRecipeChange}
@@ -32,11 +36,11 @@ const CreateRecipe = ({
           type="text"
           placeholder="Describe your the process to make your recipe... The more detail the better"
         />
-        <label>Process</label>
+        <label>Cook Time</label>
         <input
           onChange={handleRecipeChange}
-          value={recipeForm.process}
-          name="process"
+          value={recipeForm.cook_time}
+          name="cook_time"
           type="text"
           placeholder="Describe your the process to make your recipe... The more detail the better"
         />
@@ -63,6 +67,15 @@ const CreateRecipe = ({
           <option type="dessert">Dessert</option>
           <option type="cocktail">Cocktail</option>
         </select>
+        <Ingredient
+          handleIngredientAdd={handleIngredientAdd}
+          recipeForm={recipeForm}
+          handleRecipeSubmit={handleRecipeSubmit}
+          handleIngredientChange={handleIngredientChange}
+          ingredient={ingredient}
+          handleRecipeChange={handleRecipeChange}
+        />
+        <button>Submit</button>
       </form>
     </div>
   )
