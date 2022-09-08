@@ -7,6 +7,7 @@ import { CheckSession } from './services/Auth'
 import SearchResults from './pages/SearchResults'
 import Home from './pages/Home'
 import RecipeDetails from './pages/RecipeDetails'
+import MyRecipeDetails from './pages/MyRecipeDetails'
 import Nav from './components/Nav'
 import { SignUpUser } from './services/Auth'
 import Login from './pages/Login'
@@ -14,6 +15,8 @@ import Register from './pages/Register'
 import Sidebar from './components/Sidebar'
 import CreateRecipe from './pages/CreateRecipe'
 import { useNavigate, useParams } from 'react-router'
+import { GetRecipeByUser } from './services/RecipeServices'
+import UserRecipe from './pages/UserRecipe'
 
 function App() {
   let navigate = useNavigate()
@@ -136,6 +139,16 @@ function App() {
     navigate('/')
   }
 
+  // get user recipe
+  // const [recipe, setRecipe] = useState([])
+  // useEffect(() => {
+  //   const showRecipes = async (userid) => {
+  //     const data = await GetRecipeByUser(userid)
+  //     setRecipe(data)
+  //   }
+  //   showRecipes()
+  // })
+
   return (
     <div className="app">
       <Sidebar logOut={logOut} authenticated={authenticated} user={user} />
@@ -150,6 +163,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/searched/:results" element={<SearchResults />} />
         <Route path="/recipe/details/:recipeId" element={<RecipeDetails />} />
+        <Route
+          path="user/recipes/details/:recipeId"
+          element={<MyRecipeDetails />}
+        />
+        <Route path="/recipe/:userid" element={<UserRecipe user={user} />} />
         <Route
           path="/create/:userid"
           element={

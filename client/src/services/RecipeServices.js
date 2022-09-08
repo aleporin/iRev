@@ -18,9 +18,9 @@ export const GetRecipeById = async (recipeId) => {
   }
 }
 
-export const GetRecipeByUser = async (userId) => {
+export const GetRecipeByUser = async (userid) => {
   try {
-    const res = await Client.get(`/recipe/${userId}`)
+    const res = await Client.get(`/recipe/user/${userid}`)
     return res.data
   } catch (e) {
     throw e
