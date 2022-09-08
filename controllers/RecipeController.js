@@ -78,6 +78,18 @@ const UpdateRecipe = async (req, res) => {
     throw e
   }
 }
+// const SaveRecipe = async (req, res) => {
+//   try {
+//     const recipeId = parseInt(req.params.recipeId)
+//     const updatedRecipe = await Recipe.update(req.body, {
+//       where: { id: recipeId },
+//       returning: true
+//     })
+//     res.send(updatedRecipe)
+//   } catch (e) {
+//     throw e
+//   }
+// }
 
 const DeleteRecipe = async (req, res) => {
   try {

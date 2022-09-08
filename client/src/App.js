@@ -8,12 +8,12 @@ import SearchResults from './pages/SearchResults'
 import Home from './pages/Home'
 import RecipeDetails from './pages/RecipeDetails'
 import Nav from './components/Nav'
-import { Profile } from './pages/Profile'
+import { SignUpUser } from './services/Auth'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Sidebar from './components/Sidebar'
 import CreateRecipe from './pages/CreateRecipe'
-import { useNavigate } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 
 function App() {
   let navigate = useNavigate()
@@ -45,7 +45,40 @@ function App() {
     localStorage.clear()
   }
 
+  // register data
+
+  const handleRegisterChange = (error) => {
+    setFormRegisterData({
+      ...formRegisterData,
+      [error.target.name]: error.target.value
+    })
+  }
+
+  const [formRegisterData, setFormRegisterData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  })
+
+  const handleRegisterSubmit = async (error) => {
+    error.preventDefault()
+    await SignUpUser({
+      username: formRegisterData.username,
+      email: formRegisterData.email,
+      password: formRegisterData.password
+    })
+    setFormRegisterData({
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    })
+    navigate('/')
+  }
+
   // recipe form
+
   const [recipeForm, setRecipeForm] = useState({
     recipe_name: '',
     desc: '',
@@ -76,8 +109,9 @@ function App() {
     setIngredient(initialValue)
   }
 
-  const handleRecipeSubmit = async (error, userId) => {
-    error.preventDefault()
+  const handleRecipeSubmit = async (e, userid) => {
+    console.log(userid)
+    e.preventDefault()
     await CreateNewRecipe(
       {
         recipe_name: recipeForm.recipe_name,
@@ -88,7 +122,7 @@ function App() {
         process: recipeForm.process,
         image: recipeForm.image
       },
-      userId
+      userid
     )
     setRecipeForm({
       recipe_name: '',
@@ -113,12 +147,11 @@ function App() {
             <Login setAuthenticated={setAuthenticated} setUser={setUser} />
           }
         />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<Home />} />
         <Route path="/searched/:results" element={<SearchResults />} />
         <Route path="/recipe/details/:recipeId" element={<RecipeDetails />} />
         <Route
-          path="/createrecipe"
+          path="/create/:userid"
           element={
             <CreateRecipe
               handleRecipeSubmit={handleRecipeSubmit}
@@ -127,10 +160,20 @@ function App() {
               handleIngredientAdd={handleIngredientAdd}
               handleIngredientChange={handleIngredientChange}
               ingredient={ingredient}
+              user={user}
             />
           }
         />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/register"
+          element={
+            <Register
+              handleRegisterChange={handleRegisterChange}
+              formRegisterData={formRegisterData}
+              handleRegisterSubmit={handleRegisterSubmit}
+            />
+          }
+        />
       </Routes>
     </div>
   )

@@ -14,7 +14,6 @@ const RecipeDetails = () => {
   let { recipeId } = useParams()
 
   const getRecipe = async () => {
-    console.log(recipeId)
     const response = await axios.get(
       `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`
     )

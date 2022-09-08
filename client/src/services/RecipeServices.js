@@ -29,6 +29,7 @@ export const GetRecipeByUser = async (userId) => {
 
 export const CreateNewRecipe = async (data, userId) => {
   try {
+    console.log(userId)
     const res = await Client.post(`/recipe/create/${userId}`, data)
     return res.data
   } catch (e) {

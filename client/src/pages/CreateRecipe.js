@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useParams } from 'react-router'
 import Ingredient from '../components/Ingredient'
 
 const CreateRecipe = ({
@@ -7,11 +8,17 @@ const CreateRecipe = ({
   handleRecipeChange,
   handleIngredientChange,
   ingredient,
-  handleIngredientAdd
+  handleIngredientAdd,
+  user
 }) => {
+  let { userid } = useParams()
+  console.log(userid)
   return (
     <div>
-      <form className="recipe-form" onSubmit={handleRecipeSubmit}>
+      <form
+        className="recipe-form"
+        onSubmit={(e) => handleRecipeSubmit(e, userid)}
+      >
         <label>Recipe Name</label>
         <input
           onChange={handleRecipeChange}
