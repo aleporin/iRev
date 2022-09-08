@@ -162,11 +162,11 @@ function App() {
         />
         <Route path="/" element={<Home />} />
         <Route path="/searched/:results" element={<SearchResults />} />
-        <Route path="/recipe/details/:recipeId" element={<RecipeDetails />} />
         <Route
-          path="user/recipes/details/:recipeId"
+          path="/recipes/details/user/:recipeId"
           element={<MyRecipeDetails />}
         />
+        <Route path="/recipe/details/:recipeId" element={<RecipeDetails />} />
         <Route path="/recipe/:userid" element={<UserRecipe user={user} />} />
         <Route
           path="/create/:userid"

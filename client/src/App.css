@@ -14,6 +14,7 @@ body {
   width: 100vw;
   display: grid;
   grid-template: 10% 90% / 10% 90%;
+  align-items: baseline;
 }
 /* 
 main {
