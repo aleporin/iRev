@@ -14,10 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE',
         as: 'author'
       })
-      User.belongsToMany(models.Recipe, {
+      User.hasMany(models.Savedrecipe, {
         as: 'recipelist',
-        through: models.Savedrecipe,
-        foreignKey: 'userId'
+        foreignKey: 'userId',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       })
     }
   }

@@ -8,6 +8,27 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      image: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      title: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      summry: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      extendedIngredients: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        allowNull: false
+      },
+      cook_time: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      instructions: { type: Sequelize.STRING, allowNull: false },
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -17,16 +38,6 @@ module.exports = {
           key: 'id'
         },
         field: 'user_id'
-      },
-      recipeId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'recipes',
-          key: 'id'
-        },
-        field: 'recipe_id'
       },
       createdAt: {
         allowNull: false,

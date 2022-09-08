@@ -69,11 +69,12 @@ const RecipeDetails = () => {
         </ul>
       )}
       {active === 'recipe' && (
-        <ol>
-          {recipe.analyzedInstructions[0].steps.map((instruction) => (
-            <li>{instruction.step}</li>
-          ))}
-        </ol>
+        <p dangerouslySetInnerHTML={{ __html: recipe.instructions }}></p>
+        // <ol>
+        //   {recipe.analyzedInstructions[0].steps.map((instruction) => (
+        //     <li>{instruction.step}</li>
+        //   ))}
+        // </ol>
       )}
     </div>
   )

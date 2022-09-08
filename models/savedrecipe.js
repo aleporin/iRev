@@ -8,11 +8,25 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Savedrecipe.belongsTo(models.User, {
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'api_recipe'
+      })
     }
   }
   Savedrecipe.init(
     {
+      image: { type: DataTypes.STRING, allowNull: false },
+      title: { type: DataTypes.STRING, allowNull: false },
+      summary: { type: DataTypes.STRING, allowNull: false },
+      extendedIngredients: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false
+      },
+      cook_time: { type: DataTypes.INTEGER, allowNull: false },
+      instructions: { type: DataTypes.STRING, allowNull: false },
       userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -22,16 +36,6 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id'
         },
         field: 'user_id'
-      },
-      recipeId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'recipes',
-          key: 'id'
-        },
-        field: 'recipe_id'
       }
     },
     {

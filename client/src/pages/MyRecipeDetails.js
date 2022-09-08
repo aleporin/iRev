@@ -61,7 +61,7 @@ const MyRecipeDetails = () => {
           {active === 'ingredients' && (
             <ul>
               {recipe.ingrendients.map((ingrendient) => (
-                <li>{ingrendient[0]}</li>
+                <li>{ingrendient}</li>
               ))}
             </ul>
           )}

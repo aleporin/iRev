@@ -11,8 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       Cocktail.belongsTo(models.User, {
         foreignKey: 'user_id',
         onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-        as: 'author'
+        onUpdate: 'CASCADE'
       })
 
       // Cocktail.belongsToMany(models.User, {
