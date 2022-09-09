@@ -18,7 +18,6 @@ import Sidebar from './components/Sidebar'
 import CreateRecipe from './pages/CreateRecipe'
 import { useNavigate, useParams } from 'react-router'
 import { GetRecipeByUser } from './services/RecipeServices'
-import { GetUserBookmarkRecipes } from './services/BookmarkServices'
 import UserRecipe from './pages/UserRecipe'
 import SavedRecipes from './pages/SavedRecipes'
 
@@ -39,7 +38,6 @@ function App() {
     setUser(user)
     setAuthenticated(true)
   }
-
   useEffect(() => {
     const status = localStorage.getItem('token')
     if (status) {
@@ -119,7 +117,6 @@ function App() {
   }
 
   const handleRecipeSubmit = async (e, userid) => {
-    console.log(userid)
     e.preventDefault()
     await CreateNewRecipe(
       {
@@ -163,7 +160,7 @@ function App() {
 
   //bookmarked recipes
   const [recipe, setRecipe] = useState([])
-  const [bookmarkedRecipe, setBookmarkedRecipe] = useState([])
+
   const [savedRecipes, setSavedRecipes] = useState([])
 
   const savedRecipe = {
@@ -177,15 +174,10 @@ function App() {
     userId: user.id
   }
 
-  const getBookmark = async (userid) => {
-    const response = await GetUserBookmarkRecipes(userid)
-    setBookmarkedRecipe(response)
-  }
-
   return (
     <div className="app">
+      {/* <Search authenticated={authenticated} user={user} logOut={logOut} /> */}
       <Sidebar logOut={logOut} authenticated={authenticated} user={user} />
-      {/* <Nav authenticated={authenticated} user={user} logOut={logOut} /> */}
       <Routes>
         <Route
           path="/login"
@@ -195,7 +187,10 @@ function App() {
         />
         <Route path="/" element={<Home />} />
         <Route path="/searched/:results" element={<SearchResults />} />
-        <Route path="/savedrecipes" element={<SavedRecipes />} />
+        <Route
+          path="/savedrecipes/:userid"
+          element={<SavedRecipes user={user} />}
+        />
         <Route
           path="/recipes/details/user/:recipeId"
           element={

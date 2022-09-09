@@ -1,18 +1,29 @@
 const { Recipe, User, Savedrecipe } = require('../models')
 
+const { Op } = require('sequelize')
+
 const BookmarkRecipe = async (req, res) => {
   try {
-    const bookmarkedRecipe = await Savedrecipe.create({
-      title: req.body.title,
-      summary: req.body.summary,
-      extendedIngredients: req.body.extendedIngredients,
-      cook_time: req.body.cook_time,
-      instructions: req.body.instructions,
-      image: req.body.image,
-      apiId: req.body.apiId,
-      userId: req.body.userId
+    const bookmarkedRecipe = await Savedrecipe.findOne({
+      where: {
+        [Op.and]: [{ userId: req.body.userId }, { apiId: req.body.apiId }]
+      }
     })
-    res.send(bookmarkedRecipe)
+    if (bookmarkedRecipe) {
+      ;({ msg: `${req.body.title} is already bookmarked!` })
+    } else {
+      const newBookmark = await Savedrecipe.create({
+        title: req.body.title,
+        summary: req.body.summary,
+        extendedIngredients: req.body.extendedIngredients,
+        cook_time: req.body.cook_time,
+        instructions: req.body.instructions,
+        image: req.body.image,
+        apiId: req.body.apiId,
+        userId: req.body.userId
+      })
+      res.send(newBookmark)
+    }
   } catch (e) {
     throw e
   }
