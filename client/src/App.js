@@ -1,7 +1,7 @@
 import './App.css'
 import Search from './components/Search'
 import { Route, Routes } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createRef } from 'react'
 import { CreateNewRecipe } from './services/RecipeServices'
 import { CheckSession } from './services/Auth'
 import SearchResults from './pages/SearchResults'
@@ -11,6 +11,7 @@ import MyRecipeDetails from './pages/MyRecipeDetails'
 import Nav from './components/Nav'
 import { SignUpUser } from './services/Auth'
 import { DeleteRecipe } from './services/RecipeServices'
+import { UpdateRecipe } from './services/RecipeServices'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Sidebar from './components/Sidebar'
@@ -82,6 +83,9 @@ function App() {
   }
 
   // recipe form
+  let textInput = createRef()
+
+  const [error, setError] = useState(null)
 
   const [recipeForm, setRecipeForm] = useState({
     recipe_name: '',
@@ -106,10 +110,15 @@ function App() {
 
   const handleIngredientAdd = (e) => {
     e.preventDefault()
+    // const value = textInput.current.value
     let ingredients = recipeForm.ingredients
-    ingredients.push(ingredient)
-    setRecipeForm({ ...recipeForm, ingredients: ingredients })
-
+    if (!ingredients.includes(ingredient)) {
+      ingredients.push(ingredient)
+      setRecipeForm({ ...recipeForm, ingredients: ingredients })
+      setError(null)
+    } else {
+      setError('That Ingredient is already on your list')
+    }
     setIngredient(initialValue)
   }
 
@@ -140,7 +149,7 @@ function App() {
     navigate(`/recipe/${user.id}`)
   }
 
-  // delete requests
+  // delete recipe
   const [deletePost, setDeletePost] = useState(false)
 
   const deleteUserRecipe = async (recipeId) => {
@@ -148,6 +157,11 @@ function App() {
     setDeletePost(true)
     navigate(`/recipe/${user.id}`)
   }
+
+  // update recipe
+  // const updateUserRecipe = async (recipeId) => {
+  //  const payload =  await UserRecipe(recipeId)
+  // }
 
   return (
     <div className="app">
