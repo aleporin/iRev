@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      summry: {
+      summary: {
         type: Sequelize.STRING,
         allowNull: false
       },

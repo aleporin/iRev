@@ -20,6 +20,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      summary: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       ingredients: {
         type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: false

@@ -10,6 +10,7 @@ import RecipeDetails from './pages/RecipeDetails'
 import MyRecipeDetails from './pages/MyRecipeDetails'
 import Nav from './components/Nav'
 import { SignUpUser } from './services/Auth'
+import { DeleteRecipe } from './services/RecipeServices'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Sidebar from './components/Sidebar'
@@ -139,15 +140,13 @@ function App() {
     navigate('/')
   }
 
-  // get user recipe
-  // const [recipe, setRecipe] = useState([])
-  // useEffect(() => {
-  //   const showRecipes = async (userid) => {
-  //     const data = await GetRecipeByUser(userid)
-  //     setRecipe(data)
-  //   }
-  //   showRecipes()
-  // })
+  // delete requests
+  const [deletePost, setDeletePost] = useState(false)
+
+  const deleteUserRecipe = async (recipeId) => {
+    await DeleteRecipe(recipeId)
+    setDeletePost(true)
+  }
 
   return (
     <div className="app">
@@ -164,7 +163,13 @@ function App() {
         <Route path="/searched/:results" element={<SearchResults />} />
         <Route
           path="/recipes/details/user/:recipeId"
-          element={<MyRecipeDetails />}
+          element={
+            <MyRecipeDetails
+              deleteUserRecipe={deleteUserRecipe}
+              deletePost={deletePost}
+              setDeletePost={setDeletePost}
+            />
+          }
         />
         <Route path="/recipe/details/:recipeId" element={<RecipeDetails />} />
         <Route path="/recipe/:userid" element={<UserRecipe user={user} />} />

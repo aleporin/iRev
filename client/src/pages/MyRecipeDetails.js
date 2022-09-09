@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router'
 import { useParams } from 'react-router-dom'
 import { GetRecipeById } from '../services/RecipeServices'
 
-const MyRecipeDetails = () => {
+const MyRecipeDetails = ({ deleteUserRecipe }) => {
   const [recipe, setRecipe] = useState([])
   const [active, setActive] = useState('details')
 
@@ -66,6 +66,7 @@ const MyRecipeDetails = () => {
             </ul>
           )}
           {active === 'recipe' && <div>{recipe[0].process}</div>}
+          <button onClick={() => deleteUserRecipe(recipeId)}>X</button>
         </div>
       ) : null}
     </div>

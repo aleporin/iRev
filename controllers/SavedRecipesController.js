@@ -1,18 +1,23 @@
-const { Recipe, User, SavedRecipe } = require('../models')
+const { Recipe, User, Savedrecipe } = require('../models')
 
-const SaveRecipe = async (req, res) => {
+const BookmarkRecipe = async (req, res) => {
   try {
-    const savedRecipe = {
-      userId: req.params.userId,
-      recipeId: req.params.recipeId
-    }
-    await SavedRecipe.create(savedRecipe)
-    res.send(savedRecipe)
+    let userId = parseInt(req.params.userId)
+    const bookmarkedRecipe = await Savedrecipe.create({
+      title: req.body.title,
+      summary: req.body.summary,
+      extendedIngredients: req.body.extendedIngredients,
+      cook_time: req.body.cook_time,
+      instructions: req.body.instructions,
+      image: req.body.image,
+      userId: userId
+    })
+    res.send(bookmarkedRecipe)
   } catch (e) {
     throw e
   }
 }
 
 module.exports = {
-  SaveRecipe
+  BookmarkRecipe
 }
