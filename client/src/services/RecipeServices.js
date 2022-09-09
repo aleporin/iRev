@@ -44,3 +44,11 @@ export const DeleteRecipe = async (recipeId) => {
     throw e
   }
 }
+export const UpdateRecipe = async (recipeId) => {
+  try {
+    const res = await Client.put(`/recipe/update/${recipeId}`)
+    return res.data
+  } catch (e) {
+    throw e
+  }
+}
