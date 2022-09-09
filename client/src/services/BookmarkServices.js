@@ -8,3 +8,12 @@ export const NewBookmarkRecipe = async (data) => {
     throw e
   }
 }
+
+export const GetUserBookmarkRecipes = async (userid) => {
+  try {
+    const res = await Client.get(`/savedrecipes/${userid}`)
+    return res.data
+  } catch (e) {
+    throw e
+  }
+}

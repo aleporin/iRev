@@ -3,22 +3,11 @@ import { FaSearch, FaBookmark, FaRegBookmark } from 'react-icons/fa'
 import RecipeDetails from '../pages/RecipeDetails'
 import { NewBookmarkRecipe } from '../services/BookmarkServices'
 
-export const Bookmark = ({ recipe, user }) => {
-  const [bookmarkRecipe, setBookmarkRecipe] = useState()
+export const Bookmark = ({ savedRecipe }) => {
+  const [bookmarkRecipe, setBookmarkRecipe] = useState([])
 
-  const savedRecipe = {
-    title: recipe.title,
-    summary: recipe.summary,
-    extendedIngredients: recipe.extendedIngredients,
-    cook_time: recipe.readyInMinutes,
-    instructions: recipe.instructions,
-    image: recipe.image,
-    apiId: recipe.id,
-    userId: user.id
-  }
-
-  const saveRecipe = async (savedRecipe) => {
-    const response = await NewBookmarkRecipe(savedRecipe)
+  const saveRecipe = async (recipe) => {
+    const response = await NewBookmarkRecipe(recipe)
     setBookmark(true)
   }
 

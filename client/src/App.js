@@ -18,14 +18,16 @@ import Sidebar from './components/Sidebar'
 import CreateRecipe from './pages/CreateRecipe'
 import { useNavigate, useParams } from 'react-router'
 import { GetRecipeByUser } from './services/RecipeServices'
+import { GetUserBookmarkRecipes } from './services/BookmarkServices'
 import UserRecipe from './pages/UserRecipe'
+import SavedRecipes from './pages/SavedRecipes'
 
 function App() {
   let navigate = useNavigate()
 
   // user auth
   const [authenticated, setAuthenticated] = useState(false)
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState({})
   const logOut = () => {
     setUser(null)
     setAuthenticated(false)
@@ -44,11 +46,6 @@ function App() {
       checkStatus()
     }
   }, [])
-
-  const logout = () => {
-    setUser(null)
-    localStorage.clear()
-  }
 
   // register data
 
@@ -164,6 +161,27 @@ function App() {
     navigate(`/recipe/${recipeId}`)
   }
 
+  //bookmarked recipes
+  const [recipe, setRecipe] = useState([])
+  const [bookmarkedRecipe, setBookmarkedRecipe] = useState([])
+  const [savedRecipes, setSavedRecipes] = useState([])
+
+  const savedRecipe = {
+    title: recipe.title,
+    summary: recipe.summary,
+    extendedIngredients: recipe.extendedIngredients,
+    cook_time: recipe.readyInMinutes,
+    instructions: recipe.instructions,
+    image: recipe.image,
+    apiId: recipe.id,
+    userId: user.id
+  }
+
+  const getBookmark = async (userid) => {
+    const response = await GetUserBookmarkRecipes(userid)
+    setBookmarkedRecipe(response)
+  }
+
   return (
     <div className="app">
       <Sidebar logOut={logOut} authenticated={authenticated} user={user} />
@@ -177,6 +195,7 @@ function App() {
         />
         <Route path="/" element={<Home />} />
         <Route path="/searched/:results" element={<SearchResults />} />
+        <Route path="/savedrecipes" element={<SavedRecipes />} />
         <Route
           path="/recipes/details/user/:recipeId"
           element={
@@ -189,7 +208,13 @@ function App() {
         />
         <Route
           path="/recipe/details/:recipeId"
-          element={<RecipeDetails user={user} />}
+          element={
+            <RecipeDetails
+              recipe={recipe}
+              savedRecipe={savedRecipe}
+              setRecipe={setRecipe}
+            />
+          }
         />
         <Route path="/recipe/:userid" element={<UserRecipe user={user} />} />
         <Route

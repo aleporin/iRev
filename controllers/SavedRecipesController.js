@@ -18,6 +18,23 @@ const BookmarkRecipe = async (req, res) => {
   }
 }
 
+const GetUserSavedRecipes = async (req, res) => {
+  try {
+    const recipe = await Savedrecipe.findAll({
+      where: { userId: req.params.userId },
+      include: {
+        model: User,
+        as: 'api_recipe',
+        attributes: ['username']
+      }
+    })
+    res.send(recipe)
+  } catch (e) {
+    throw e
+  }
+}
+
 module.exports = {
-  BookmarkRecipe
+  BookmarkRecipe,
+  GetUserSavedRecipes
 }
