@@ -18,7 +18,7 @@ const MyRecipeDetails = ({ deleteUserRecipe }) => {
 
   useEffect(() => {
     getRecipes()
-  }, [])
+  }, [deleteUserRecipe])
 
   return (
     // <div className="recipe-detail">

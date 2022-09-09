@@ -38,7 +38,7 @@ export const CreateNewRecipe = async (data, userId) => {
 }
 export const DeleteRecipe = async (recipeId) => {
   try {
-    const res = await Client.delete(`/delete/${recipeId}`)
+    const res = await Client.delete(`/recipe/delete/${recipeId}`)
     return res.data
   } catch (e) {
     throw e

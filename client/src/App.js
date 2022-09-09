@@ -137,7 +137,7 @@ function App() {
       process: '',
       image: ''
     })
-    navigate('/')
+    navigate(`/recipe/${user.id}`)
   }
 
   // delete requests
@@ -146,6 +146,7 @@ function App() {
   const deleteUserRecipe = async (recipeId) => {
     await DeleteRecipe(recipeId)
     setDeletePost(true)
+    navigate(`/recipe/${user.id}`)
   }
 
   return (
