@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       })
       User.hasMany(models.Savedrecipe, {
         as: 'recipelist',
-        foreignKey: 'userId',
+        foreignKey: 'user_id',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })

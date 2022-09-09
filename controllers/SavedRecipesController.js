@@ -2,7 +2,6 @@ const { Recipe, User, Savedrecipe } = require('../models')
 
 const BookmarkRecipe = async (req, res) => {
   try {
-    let userId = parseInt(req.params.userId)
     const bookmarkedRecipe = await Savedrecipe.create({
       title: req.body.title,
       summary: req.body.summary,
@@ -10,7 +9,8 @@ const BookmarkRecipe = async (req, res) => {
       cook_time: req.body.cook_time,
       instructions: req.body.instructions,
       image: req.body.image,
-      userId: userId
+      apiId: req.body.apiId,
+      userId: req.body.userId
     })
     res.send(bookmarkedRecipe)
   } catch (e) {

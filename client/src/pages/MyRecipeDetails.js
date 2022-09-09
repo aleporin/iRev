@@ -60,8 +60,8 @@ const MyRecipeDetails = ({ deleteUserRecipe }) => {
           )}
           {active === 'ingredients' && (
             <ul>
-              {recipe.ingrendients.map((ingrendient) => (
-                <li>{ingrendient}</li>
+              {recipe[0].ingrendients.map((ingrendient) => (
+                <li>{ingrendient.index}</li>
               ))}
             </ul>
           )}

@@ -18,15 +18,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   Savedrecipe.init(
     {
-      image: { type: DataTypes.STRING, allowNull: false },
-      title: { type: DataTypes.STRING, allowNull: false },
-      summary: { type: DataTypes.STRING, allowNull: false },
+      image: { type: DataTypes.STRING(1000), allowNull: false },
+      title: { type: DataTypes.STRING(2000), allowNull: false },
+      summary: { type: DataTypes.STRING(2000), allowNull: false },
       extendedIngredients: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.JSON),
         allowNull: false
       },
       cook_time: { type: DataTypes.INTEGER, allowNull: false },
-      instructions: { type: DataTypes.STRING, allowNull: false },
+      instructions: { type: DataTypes.STRING(2000), allowNull: false },
       userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -36,6 +36,11 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id'
         },
         field: 'user_id'
+      },
+      apiId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE'
       }
     },
     {

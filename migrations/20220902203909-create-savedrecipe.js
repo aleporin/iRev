@@ -9,26 +9,26 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       image: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(1000),
         allowNull: false
       },
       title: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(2000),
         allowNull: false
       },
       summary: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(2000),
         allowNull: false
       },
       extendedIngredients: {
-        type: Sequelize.ARRAY(Sequelize.STRING),
+        type: Sequelize.ARRAY(Sequelize.JSON),
         allowNull: false
       },
       cook_time: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      instructions: { type: Sequelize.STRING, allowNull: false },
+      instructions: { type: Sequelize.STRING(2000), allowNull: false },
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -38,6 +38,11 @@ module.exports = {
           key: 'id'
         },
         field: 'user_id'
+      },
+      apiId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

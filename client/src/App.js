@@ -110,7 +110,6 @@ function App() {
 
   const handleIngredientAdd = (e) => {
     e.preventDefault()
-    // const value = textInput.current.value
     let ingredients = recipeForm.ingredients
     if (!ingredients.includes(ingredient)) {
       ingredients.push(ingredient)
@@ -159,9 +158,11 @@ function App() {
   }
 
   // update recipe
-  // const updateUserRecipe = async (recipeId) => {
-  //  const payload =  await UserRecipe(recipeId)
-  // }
+
+  const updateUserRecipe = async (recipeId) => {
+    await UpdateRecipe(recipeId)
+    navigate(`/recipe/${recipeId}`)
+  }
 
   return (
     <div className="app">
@@ -186,7 +187,10 @@ function App() {
             />
           }
         />
-        <Route path="/recipe/details/:recipeId" element={<RecipeDetails />} />
+        <Route
+          path="/recipe/details/:recipeId"
+          element={<RecipeDetails user={user} />}
+        />
         <Route path="/recipe/:userid" element={<UserRecipe user={user} />} />
         <Route
           path="/create/:userid"
