@@ -25,11 +25,13 @@ main {
 /* food cards */
 .card-wrapper {
   margin: 4rem 0rem;
+  width: 80%;
 }
 .card-content {
   min-height: 25rem;
   border-radius: 2rem;
   overflow: hidden;
+  height: 30%;
 }
 
 .card-content img {
@@ -39,6 +41,7 @@ main {
 
 .card-content p {
   font-weight: 600;
+  font-size: small;
   display: flex;
   justify-content: center;
   align-items: center;
