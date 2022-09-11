@@ -23,31 +23,23 @@ const SavedRecipes = ({ user }) => {
   return (
     <div>
       <div className="card-wrapper">
-        <h3>Bookmarks</h3>
-        <Splide
-          options={{
-            perPage: 4,
-            arrows: false,
-            pagination: false,
-            drag: 'free',
-            gap: '5rem'
-          }}
-        >
+        <h3 className="section-title">Bookmarked Recipes</h3>
+        <div className="recipe-grid">
           {bookmarkedRecipe?.map((recipe) => (
-            <SplideSlide>
+            <div className="recipe-item">
               {/* <Link to={`user/recipes/details/${recipe.id}`}> */}
               <div
                 key={recipe.id}
                 className="card-content"
                 onClick={() => navigate(`/recipe/details/${recipe.apiId}`)}
               >
-                <p>{recipe.title}</p>
                 <img src={recipe.image} />
+                <p>{recipe.title}</p>
               </div>
               {/* </Link> */}
-            </SplideSlide>
+            </div>
           ))}
-        </Splide>
+        </div>
       </div>
     </div>
   )

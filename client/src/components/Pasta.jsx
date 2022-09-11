@@ -23,22 +23,21 @@ const Pasta = () => {
   return (
     <div>
       <div className="card-wrapper">
-        <h3>Pasta Recipes</h3>
+        <h3 className="section-title">Pasta Recipes</h3>
         <Splide
           options={{
-            perPage: 3,
+            perPage: 4,
             arrows: false,
             pagination: false,
-            drag: 'free',
-            gap: '5rem'
+            drag: 'free'
           }}
         >
           {pasta.map((recipe) => (
             <SplideSlide>
               <Link to={`/recipe/details/${recipe.id}`}>
                 <div key={recipe.id} className="card-content">
-                  <p>{recipe.title}</p>
                   <img src={recipe.image} />
+                  <p>{recipe.title}</p>
                 </div>
               </Link>
             </SplideSlide>

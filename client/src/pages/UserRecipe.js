@@ -20,33 +20,23 @@ const UserRecipe = ({ user }) => {
 
   return (
     <div>
-      <div>
-        <div className="card-wrapper">
-          <h3>Your Recipes</h3>
-          <Splide
-            options={{
-              perPage: 4,
-              arrows: false,
-              pagination: false,
-              drag: 'free',
-              gap: '5rem'
-            }}
-          >
-            {recipe?.map((recipe) => (
-              <SplideSlide>
-                {/* <Link to={`user/recipes/details/${recipe.id}`}> */}
-                <div
-                  key={recipe.id}
-                  className="card-content"
-                  onClick={() => navigate(`/recipes/details/user/${recipe.id}`)}
-                >
-                  <p>{recipe.title}</p>
-                  <img src={recipe.image} />
-                </div>
-                {/* </Link> */}
-              </SplideSlide>
-            ))}
-          </Splide>
+      <div className="card-wrapper">
+        <h3 className="section-title">Your Recipes</h3>
+        <div className="recipe-grid">
+          {recipe?.map((recipe) => (
+            <div>
+              {/* <Link to={`user/recipes/details/${recipe.id}`}> */}
+              <div
+                key={recipe.id}
+                className="card-content"
+                onClick={() => navigate(`/recipes/details/user/${recipe.id}`)}
+              >
+                <img src={recipe.image} />
+                <p>{recipe.title}</p>
+              </div>
+              {/* </Link> */}
+            </div>
+          ))}
         </div>
       </div>
     </div>

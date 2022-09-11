@@ -175,68 +175,70 @@ function App() {
   }
 
   return (
-    <div className="app">
-      {/* <Search authenticated={authenticated} user={user} logOut={logOut} /> */}
-      <Sidebar logOut={logOut} authenticated={authenticated} user={user} />
-      <Routes>
-        <Route
-          path="/login"
-          element={
-            <Login setAuthenticated={setAuthenticated} setUser={setUser} />
-          }
-        />
-        <Route path="/" element={<Home />} />
-        <Route path="/searched/:results" element={<SearchResults />} />
-        <Route
-          path="/savedrecipes/:userid"
-          element={<SavedRecipes user={user} />}
-        />
-        <Route
-          path="/recipes/details/user/:recipeId"
-          element={
-            <MyRecipeDetails
-              deleteUserRecipe={deleteUserRecipe}
-              deletePost={deletePost}
-              setDeletePost={setDeletePost}
-            />
-          }
-        />
-        <Route
-          path="/recipe/details/:recipeId"
-          element={
-            <RecipeDetails
-              recipe={recipe}
-              savedRecipe={savedRecipe}
-              setRecipe={setRecipe}
-            />
-          }
-        />
-        <Route path="/recipe/:userid" element={<UserRecipe user={user} />} />
-        <Route
-          path="/create/:userid"
-          element={
-            <CreateRecipe
-              handleRecipeSubmit={handleRecipeSubmit}
-              recipeForm={recipeForm}
-              handleRecipeChange={handleRecipeChange}
-              handleIngredientAdd={handleIngredientAdd}
-              handleIngredientChange={handleIngredientChange}
-              ingredient={ingredient}
-              user={user}
-            />
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <Register
-              handleRegisterChange={handleRegisterChange}
-              formRegisterData={formRegisterData}
-              handleRegisterSubmit={handleRegisterSubmit}
-            />
-          }
-        />
-      </Routes>
+    <div>
+      <Search authenticated={authenticated} user={user} logOut={logOut} />
+      <div className="app">
+        <Sidebar logOut={logOut} authenticated={authenticated} user={user} />
+        <Routes>
+          <Route
+            path="/login"
+            element={
+              <Login setAuthenticated={setAuthenticated} setUser={setUser} />
+            }
+          />
+          <Route path="/" element={<Home />} />
+          <Route path="/searched/:results" element={<SearchResults />} />
+          <Route
+            path="/savedrecipes/:userid"
+            element={<SavedRecipes user={user} />}
+          />
+          <Route
+            path="/recipes/details/user/:recipeId"
+            element={
+              <MyRecipeDetails
+                deleteUserRecipe={deleteUserRecipe}
+                deletePost={deletePost}
+                setDeletePost={setDeletePost}
+              />
+            }
+          />
+          <Route
+            path="/recipe/details/:recipeId"
+            element={
+              <RecipeDetails
+                recipe={recipe}
+                savedRecipe={savedRecipe}
+                setRecipe={setRecipe}
+              />
+            }
+          />
+          <Route path="/recipe/:userid" element={<UserRecipe user={user} />} />
+          <Route
+            path="/create/:userid"
+            element={
+              <CreateRecipe
+                handleRecipeSubmit={handleRecipeSubmit}
+                recipeForm={recipeForm}
+                handleRecipeChange={handleRecipeChange}
+                handleIngredientAdd={handleIngredientAdd}
+                handleIngredientChange={handleIngredientChange}
+                ingredient={ingredient}
+                user={user}
+              />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <Register
+                handleRegisterChange={handleRegisterChange}
+                formRegisterData={formRegisterData}
+                handleRegisterSubmit={handleRegisterSubmit}
+              />
+            }
+          />
+        </Routes>
+      </div>
     </div>
   )
 }

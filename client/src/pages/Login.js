@@ -20,8 +20,8 @@ const Login = ({ setUser, setAuthenticated }) => {
   return (
     <div className="pagewrap">
       <div className="container">
-        <div className="home-title">
-          <h1>Welcome Back</h1>
+        <div className="home-div">
+          <h1 className="home-title">Welcome Back</h1>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-wrap">
@@ -64,7 +64,7 @@ const Login = ({ setUser, setAuthenticated }) => {
         <div className="register-line">
           <p className="register-string">Don't have an account?</p>
           <Link to="/register" className="register-link">
-            Register
+            Create Account
           </Link>
         </div>
       </div>

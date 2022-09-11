@@ -19,7 +19,7 @@ const Search = () => {
     <form className="search-form" onSubmit={getSearchResults}>
       <input
         type="text"
-        placeholder="Browse Thousands Of Recipes Here"
+        placeholder="Browse Thousands of Recipes Here"
         onChange={(e) => setSearchQuery(e.target.value)}
         value={searchQuery}
       />

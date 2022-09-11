@@ -23,22 +23,21 @@ const Trending = () => {
   return (
     <div>
       <div className="card-wrapper">
-        <h3>Trending Recipes</h3>
+        <h3 className="section-title">Trending Recipes</h3>
         <Splide
           options={{
             perPage: 4,
             arrows: false,
             pagination: false,
-            drag: 'free',
-            gap: '5rem'
+            drag: 'free'
           }}
         >
           {trending.map((recipe) => (
             <SplideSlide>
               <Link to={`/recipe/details/${recipe.id}`}>
                 <div key={recipe.id} className="card-content">
-                  <p>{recipe.title}</p>
                   <img src={recipe.image} />
+                  <p>{recipe.title}</p>
                 </div>
               </Link>
             </SplideSlide>

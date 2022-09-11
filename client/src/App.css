@@ -25,23 +25,25 @@ main {
 /* food cards */
 .card-wrapper {
   margin: 4rem 0rem;
-  width: 80%;
+  overflow: hidden;
 }
 .card-content {
-  min-height: 25rem;
-  border-radius: 2rem;
-  overflow: hidden;
-  height: 30%;
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
 }
 
 .card-content img {
-  border-radius: 2rem;
-  width: 100%;
+  border-radius: 1rem;
 }
 
 .card-content p {
+  font-family: 'Avenir';
+  font-size: 14px;
   font-weight: 600;
-  font-size: small;
+  padding-top: 15px;
+  min-height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,15 +57,15 @@ main {
 }
 
 .search-form input {
-  border: none;
-  background-color: blue;
-  font-size: 1.5rem;
-  color: white;
-  padding: 1rem 3rem;
-  border: none;
-  border-radius: 1rem;
-  outline: none;
-  width: 100%;
+  margin-top: 20px;
+  background-color: white;
+  font-family: 'Avenir';
+  font-size: 1rem;
+  padding-left: 10px;
+  border: 1px solid #1338be;
+  border-radius: 4px;
+  width: 400px;
+  height: 40px;
 }
 
 .search-results {
@@ -137,9 +139,6 @@ main {
   padding-top: 30px;
 }
 
-.title-image {
-}
-
 /*  login/register forms */
 
 .pagewrap {
@@ -147,15 +146,16 @@ main {
   width: 100vw;
   background-color: white;
 
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
   width: 400px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 .form-wrap {
   display: flex;
@@ -185,7 +185,7 @@ main {
 .login-button-text {
   color: white;
   font-family: 'Avenir';
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .input {
@@ -194,6 +194,37 @@ main {
   border-color: black;
   border-radius: 3px;
   padding-left: 8px;
+  font-family: 'Avenir';
+  font-size: 14px;
+}
+
+.home-title {
+  font-family: 'Avenir';
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.home-div {
+  margin-bottom: 20px;
+}
+
+.register-string {
+  font-family: 'Avenir';
+  font-weight: 500;
+}
+
+.register-link {
+  font-family: 'Avenir';
+  font-weight: 600;
+  color: #1338be;
+}
+
+.register-line {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
 }
 
 /*  */
@@ -201,4 +232,99 @@ main {
 .recipe-form {
   display: flex;
   flex-direction: column;
+}
+
+.section-title {
+  font-family: 'Avenir';
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.recipe-grid {
+  display: flex;
+  /* width: 100%; */
+  /* flex-wrap: wrap; */
+}
+
+.recipe-field-label {
+  font-family: 'Avenir';
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.recipe-field-input {
+  border: 1px solid gray;
+  border-radius: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  font-family: 'Avenir';
+  font-size: 13px;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  width: 500px;
+}
+
+.page-title {
+  margin-top: 50px;
+  margin-bottom: 15px;
+  font-family: 'Avenir';
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.ingredient-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #1338be;
+  color: white;
+  font-family: 'Avenir';
+  width: 500px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  font-weight: 800;
+}
+
+.add-ingredient-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-color: #1338be;
+  border-width: 1px;
+  background-color: white;
+  color: #1338be;
+  font-family: 'Avenir';
+  width: 500px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  font-weight: 800;
+}
+
+.ingredient-text {
+  font-family: 'Avenir';
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ingredients-title {
+  font-family: 'Avenir';
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.recipe-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe-item {
+  padding-right: 20px;
 }

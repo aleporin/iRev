@@ -15,55 +15,64 @@ const CreateRecipe = ({
   console.log(userid)
   return (
     <div>
+      <h1 className="page-title">Create New Recipe</h1>
       <form
         className="recipe-form"
         onSubmit={(e) => handleRecipeSubmit(e, userid)}
       >
-        <label>Recipe Name</label>
+        <label className="recipe-field-label">Recipe Name</label>
         <input
           onChange={handleRecipeChange}
           value={recipeForm.recipe_name}
           name="recipe_name"
           type="text"
           placeholder="Give your recipe a meaningful name..."
+          className="recipe-field-input"
         />
-        <label>Description</label>
-        <input
+        <label className="recipe-field-label">Description</label>
+        <textarea
           onChange={handleRecipeChange}
           value={recipeForm.desc}
           name="desc"
           type="text"
           placeholder="Describe your recipe"
+          className="recipe-field-input"
         />
-        <label>Process</label>
-        <input
+        <label className="recipe-field-label">Process</label>
+        <textarea
           onChange={handleRecipeChange}
           value={recipeForm.process}
           name="process"
           type="text"
           placeholder="Describe your the process to make your recipe... The more detail the better"
+          className="recipe-field-input"
         />
-        <label>Cook Time</label>
+        <label className="recipe-field-label">Cook Time</label>
         <input
           onChange={handleRecipeChange}
           value={recipeForm.cook_time}
           name="cook_time"
           type="text"
           placeholder="Describe your the process to make your recipe... The more detail the better"
+          className="recipe-field-input"
         />
-        <label>Image</label>
+        <label className="recipe-field-label">Image</label>
         <input
           onChange={handleRecipeChange}
           value={recipeForm.image}
           name="image"
           type="text"
           placeholder="Post a link to your recipe!"
+          className="recipe-field-input"
         />
-        <label htmlFor="category">Category:</label>
+        <label className="recipe-field-label" htmlFor="category">
+          Category
+        </label>
         <select
           onChange={handleRecipeChange}
           value={recipeForm.category}
           name="category"
+          className="recipe-field-input"
         >
           <option type="option" value="" disabled hidden></option>
           <option type="snack" value="snack">
@@ -82,7 +91,7 @@ const CreateRecipe = ({
           ingredient={ingredient}
           handleRecipeChange={handleRecipeChange}
         />
-        <button>Submit</button>
+        <button className="submit-button">Submit Recipe</button>
       </form>
     </div>
   )
