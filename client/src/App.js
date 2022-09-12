@@ -247,6 +247,7 @@ function App() {
                 recipe={recipe}
                 savedRecipe={savedRecipe}
                 setRecipe={setRecipe}
+                user={user}
               />
             }
           />

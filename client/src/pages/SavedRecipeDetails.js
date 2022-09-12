@@ -6,7 +6,8 @@ import { GetApiSavedRecipe } from '../services/BookmarkServices'
 const SavedRecipeDetails = ({
   // checkBookmark,
   savedRecipes,
-  setSavedRecipes
+  setSavedRecipes,
+  deleteUserBookmarkedRecipe
   // setUnBookmarked
 }) => {
   let { apiId, userId } = useParams()
@@ -29,7 +30,10 @@ const SavedRecipeDetails = ({
       <div className="title-image">
         <h3>{unBookmarked.title}</h3>
         <img src={unBookmarked.image} />
-        <UnBookmark unBookmarked={unBookmarked} />
+        <UnBookmark
+          unBookmarked={unBookmarked}
+          deleteUserBookmarkedRecipe={deleteUserBookmarkedRecipe}
+        />
       </div>
 
       <div className="button-wrap">
