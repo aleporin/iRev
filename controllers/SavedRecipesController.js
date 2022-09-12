@@ -63,6 +63,21 @@ const GetRecipeById = async (req, res) => {
   }
 }
 
+const DeleteBookmark = async (req, res) => {
+  try {
+    await Savedrecipe.destroy({
+      where: { id: req.params.apiId }
+    })
+    res.send({
+      msg: 'Recipe Has Been Deleted!',
+      payload: req.params.recipeId,
+      status: 'Ok'
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   BookmarkRecipe,
   GetUserSavedRecipes,
