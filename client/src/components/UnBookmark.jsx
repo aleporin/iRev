@@ -14,9 +14,9 @@ export const UnBookmark = ({ savedRecipe }) => {
   const [bookmark, setBookmark] = useState(false)
   return (
     <div>
-      <div onClick={() => saveRecipe(savedRecipe)}>
-        {bookmark ? <FaRegBookmark size={30} /> : <FaBookmark size={30} />}
-      </div>
+      {/* <div onClick={() => saveRecipe(savedRecipe)}> */}
+      {bookmark ? <FaRegBookmark size={30} /> : <FaBookmark size={30} />}
+      {/* </div> */}
     </div>
   )
 }

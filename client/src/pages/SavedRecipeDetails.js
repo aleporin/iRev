@@ -1,8 +1,19 @@
 import { useState, useEffect } from 'react'
 import { UnBookmark } from '../components/UnBookmark'
+import { useParams } from 'react-router'
 
-const SavedRecipeDetails = ({ checkBookmark, savedRecipe }) => {
+const SavedRecipeDetails = ({
+  checkBookmark,
+  savedRecipe,
+  setUnBookmarked
+}) => {
+  let { apiId } = useParams()
+  let { userId } = useParams()
   const [active, setActive] = useState('details')
+  useEffect(() => {
+    checkBookmark(apiId, userId)
+  }, [])
+
   return (
     // <div className="recipe-detail">
     <div className="recipe-wrap">

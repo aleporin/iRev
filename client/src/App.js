@@ -165,6 +165,8 @@ function App() {
 
   const [savedRecipes, setSavedRecipes] = useState([])
 
+  const [unBookmarked, setUnBookmarked] = useState([])
+
   const savedRecipe = {
     title: recipe.title,
     summary: recipe.summary,
@@ -177,7 +179,8 @@ function App() {
   }
 
   const checkBookmark = async (apiId, userId) => {
-    await GetApiSavedRecipe(apiId, userId)
+    const response = await GetApiSavedRecipe(apiId, userId)
+    setUnBookmarked(response.data)
   }
 
   return (
@@ -196,7 +199,13 @@ function App() {
           <Route path="/searched/:results" element={<SearchResults />} />
           <Route
             path="/savedrecipes/:userid"
-            element={<SavedRecipes user={user} savedRecipe={savedRecipe} />}
+            element={
+              <SavedRecipes
+                user={user}
+                savedRecipe={savedRecipe}
+                setUnBookmarked={setUnBookmarked}
+              />
+            }
           />
           <Route
             path="/details/:apiId/:userId"
