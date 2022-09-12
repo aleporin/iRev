@@ -18,7 +18,10 @@ import Sidebar from './components/Sidebar'
 import CreateRecipe from './pages/CreateRecipe'
 import { useNavigate, useParams } from 'react-router'
 import { GetRecipeByUser } from './services/RecipeServices'
-import { GetApiSavedRecipe } from './services/BookmarkServices'
+import {
+  DeleteUserBookmark,
+  GetApiSavedRecipe
+} from './services/BookmarkServices'
 import UserRecipe from './pages/UserRecipe'
 import SavedRecipes from './pages/SavedRecipes'
 import SavedRecipeDetails from './pages/SavedRecipeDetails'
@@ -183,6 +186,15 @@ function App() {
     setUnBookmarked(response.data)
   }
 
+  //unbookmark recipe
+  const [unBookmarkUserRecipe, setUnBookmarkUserRecipe] = useState(false)
+
+  const deleteUserBookmarkedRecipe = async (recipeId) => {
+    await DeleteUserBookmark(recipeId)
+    setUnBookmarkUserRecipe(true)
+    navigate(`/savedrecipes/${user.id}`)
+  }
+
   return (
     <div>
       <Search authenticated={authenticated} user={user} logOut={logOut} />
@@ -214,6 +226,7 @@ function App() {
                 checkBookmark={checkBookmark}
                 savedRecipes={savedRecipes}
                 setSavedRecipes={setSavedRecipes}
+                deleteUserBookmarkedRecipe={deleteUserBookmarkedRecipe}
               />
             }
           />

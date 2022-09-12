@@ -81,5 +81,6 @@ const DeleteBookmark = async (req, res) => {
 module.exports = {
   BookmarkRecipe,
   GetUserSavedRecipes,
-  GetRecipeById
+  GetRecipeById,
+  DeleteBookmark
 }

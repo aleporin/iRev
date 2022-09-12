@@ -5,5 +5,6 @@ const controller = require('../Controllers/SavedRecipesController')
 router.post('/', controller.BookmarkRecipe)
 router.get('/:userId', controller.GetUserSavedRecipes)
 router.get('/details/:apiId/:userId', controller.GetRecipeById)
+router.delete('/delete/:apiId', controller.DeleteBookmark)
 
 module.exports = router

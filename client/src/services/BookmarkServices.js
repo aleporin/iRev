@@ -26,3 +26,12 @@ export const GetApiSavedRecipe = async (apiId, userId) => {
     throw e
   }
 }
+
+export const DeleteUserBookmark = async (apiId) => {
+  try {
+    const res = await Client.delete(`/savedrecipes/delete/${apiId}`)
+    return res.data
+  } catch (e) {
+    throw e
+  }
+}
