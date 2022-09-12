@@ -212,7 +212,8 @@ function App() {
             element={
               <SavedRecipeDetails
                 checkBookmark={checkBookmark}
-                savedRecipe={savedRecipe}
+                savedRecipes={savedRecipes}
+                setSavedRecipes={setSavedRecipes}
               />
             }
           />

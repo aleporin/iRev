@@ -45,6 +45,7 @@ const GetUserSavedRecipes = async (req, res) => {
   }
 }
 const GetRecipeById = async (req, res) => {
+  console.log('GetRecipeById')
   try {
     const recipe = await Savedrecipe.findOne({
       where: {
