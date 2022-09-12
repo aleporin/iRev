@@ -7,7 +7,13 @@ import { Bookmark } from '../components/Bookmark'
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
-const RecipeDetails = ({ recipe, setRecipe, savedRecipe }) => {
+const RecipeDetails = ({
+  recipe,
+  setRecipe,
+  savedRecipe,
+  user,
+  authenticated
+}) => {
   // const [recipe, setRecipe] = useState([])
   const [active, setActive] = useState('details')
 
@@ -30,7 +36,11 @@ const RecipeDetails = ({ recipe, setRecipe, savedRecipe }) => {
       <div className="title-image">
         <h3>{recipe.title}</h3>
         <img src={recipe.image} />
-        <Bookmark savedRecipe={savedRecipe} />
+        <Bookmark
+          savedRecipe={savedRecipe}
+          user={user}
+          authenticated={authenticated}
+        />
       </div>
 
       <div className="button-wrap">

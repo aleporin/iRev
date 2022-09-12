@@ -192,7 +192,6 @@ function App() {
   const deleteUserBookmarkedRecipe = async (recipeId) => {
     await DeleteUserBookmark(recipeId)
     setUnBookmarkUserRecipe(true)
-    navigate(`/savedrecipes/${user.id}`)
   }
 
   return (
@@ -248,6 +247,7 @@ function App() {
                 savedRecipe={savedRecipe}
                 setRecipe={setRecipe}
                 user={user}
+                authenticated={authenticated}
               />
             }
           />
