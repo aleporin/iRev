@@ -44,8 +44,26 @@ const GetUserSavedRecipes = async (req, res) => {
     throw e
   }
 }
+const GetRecipeById = async (req, res) => {
+  try {
+    const recipe = await Savedrecipe.findOne({
+      where: {
+        [Op.and]: [{ userId: req.params.userId }, { apiId: req.params.apiId }]
+      },
+      include: {
+        model: User,
+        as: 'api_recipe',
+        attributes: ['username']
+      }
+    })
+    res.send(recipe)
+  } catch (e) {
+    throw e
+  }
+}
 
 module.exports = {
   BookmarkRecipe,
-  GetUserSavedRecipes
+  GetUserSavedRecipes,
+  GetRecipeById
 }

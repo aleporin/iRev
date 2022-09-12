@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react'
 
 const SavedRecipes = ({ user }) => {
   let { userid } = useParams()
+
   const [bookmarkedRecipe, setBookmarkedRecipe] = useState([])
 
   const getBookmark = async (userid) => {
@@ -27,16 +28,16 @@ const SavedRecipes = ({ user }) => {
         <div className="recipe-grid">
           {bookmarkedRecipe?.map((recipe) => (
             <div className="recipe-item">
-              {/* <Link to={`user/recipes/details/${recipe.id}`}> */}
-              <div
-                key={recipe.id}
-                className="card-content"
-                onClick={() => navigate(`/recipe/details/${recipe.apiId}`)}
-              >
-                <img src={recipe.image} />
-                <p>{recipe.title}</p>
-              </div>
-              {/* </Link> */}
+              <Link to={`/details/${recipe.apiId}/${userid}`}>
+                <div
+                  key={recipe.id}
+                  className="card-content"
+                  // onClick={() => navigate(`/details/${apiId}}/${userid}`)}
+                >
+                  <img src={recipe.image} />
+                  <p>{recipe.title}</p>
+                </div>
+              </Link>
             </div>
           ))}
         </div>

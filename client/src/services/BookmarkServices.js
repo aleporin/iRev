@@ -17,3 +17,12 @@ export const GetUserBookmarkRecipes = async (userid) => {
     throw e
   }
 }
+
+export const GetApiSavedRecipe = async (userid, apiId) => {
+  try {
+    const res = await Client.get(`/savedrecipes/details/${apiId}/${userid}`)
+    return res.data
+  } catch (e) {
+    throw e
+  }
+}

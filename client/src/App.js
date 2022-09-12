@@ -18,8 +18,10 @@ import Sidebar from './components/Sidebar'
 import CreateRecipe from './pages/CreateRecipe'
 import { useNavigate, useParams } from 'react-router'
 import { GetRecipeByUser } from './services/RecipeServices'
+import { GetApiSavedRecipe } from './services/BookmarkServices'
 import UserRecipe from './pages/UserRecipe'
 import SavedRecipes from './pages/SavedRecipes'
+import SavedRecipeDetails from './pages/SavedRecipeDetails'
 
 function App() {
   let navigate = useNavigate()
@@ -174,6 +176,10 @@ function App() {
     userId: user.id
   }
 
+  const checkBookmark = async (apiId, userId) => {
+    await GetApiSavedRecipe(apiId, userId)
+  }
+
   return (
     <div>
       <Search authenticated={authenticated} user={user} logOut={logOut} />
@@ -190,7 +196,16 @@ function App() {
           <Route path="/searched/:results" element={<SearchResults />} />
           <Route
             path="/savedrecipes/:userid"
-            element={<SavedRecipes user={user} />}
+            element={<SavedRecipes user={user} savedRecipe={savedRecipe} />}
+          />
+          <Route
+            path="/details/:apiId/:userId"
+            element={
+              <SavedRecipeDetails
+                checkBookmark={checkBookmark}
+                savedRecipe={savedRecipe}
+              />
+            }
           />
           <Route
             path="/recipes/details/user/:recipeId"
