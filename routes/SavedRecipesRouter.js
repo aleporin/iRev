@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const controller = require('../Controllers/SavedRecipesController')
+const controller = require('../controllers/SavedRecipesController')
 // const middleware = require('../middleware')
 
 router.post('/', controller.BookmarkRecipe)
