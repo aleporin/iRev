@@ -94,7 +94,11 @@ const Sidebar = ({ logOut, authenticated, user }) => {
     </div>
   )
 
-  return <div>{authenticated && user ? isAuthenticated : notAuthenticated}</div>
+  return (
+    <div className="side-bar">
+      {authenticated && user ? isAuthenticated : notAuthenticated}
+    </div>
+  )
 }
 
 export default Sidebar

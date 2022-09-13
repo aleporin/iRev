@@ -14,7 +14,7 @@ const CreateRecipe = ({
   let { userid } = useParams()
   console.log(userid)
   return (
-    <div>
+    <div className="create-recipe-wrap">
       <h1 className="page-title">Create New Recipe</h1>
       <form
         className="recipe-form"

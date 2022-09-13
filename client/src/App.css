@@ -12,6 +12,7 @@ body {
 
 .app {
   width: 100vw;
+  height: 100vh;
   display: grid;
   grid-template: 10% 90% / 10% 90%;
   align-items: baseline;
@@ -52,8 +53,12 @@ main {
 /* search styles */
 
 .search-form {
-  margin: 0rem 30rem;
+  place-self: center;
+  /* grid-column-end: span 2; */
+  /* margin: 0rem 30rem; */
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .search-form input {
@@ -64,7 +69,7 @@ main {
   padding-left: 10px;
   border: 1px solid #1338be;
   border-radius: 4px;
-  width: 400px;
+  width: 500px;
   height: 40px;
 }
 
@@ -84,6 +89,13 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* side bar */
+
+.side-bar {
+  grid-column-end: span 1;
+  grid-column-start: 1;
 }
 
 /* recipe details */
@@ -142,10 +154,7 @@ main {
 /*  login/register forms */
 
 .pagewrap {
-  height: 100vh;
-  width: 100vw;
   background-color: white;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -327,4 +336,10 @@ main {
 
 .recipe-item {
   padding-right: 20px;
+}
+
+.sign-up-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 }

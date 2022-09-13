@@ -26,7 +26,7 @@ const Trending = () => {
         <h3 className="section-title">Trending Recipes</h3>
         <Splide
           options={{
-            perPage: 4,
+            perPage: 3,
             arrows: false,
             pagination: false,
             drag: 'free'

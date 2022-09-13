@@ -2,8 +2,10 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { FaSearch, FaBookmark, FaRegBookmark } from 'react-icons/fa'
 import { useNavigate } from 'react-router'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { GetRecipeById } from '../services/RecipeServices'
+import { AiFillDelete } from 'react-icons/ai'
+import EditRecipe from '../components/EditRecipe'
 
 const MyRecipeDetails = ({ deleteUserRecipe }) => {
   const [recipe, setRecipe] = useState({})
@@ -30,6 +32,12 @@ const MyRecipeDetails = ({ deleteUserRecipe }) => {
           <img src={recipe.image} />
         </div>
 
+        <button onClick={() => deleteUserRecipe(recipeId)}>
+          <AiFillDelete />
+        </button>
+        <Link to={`/editrecipe/${recipe.id}`}>
+          <button>Edit</button>
+        </Link>
         <div className="button-wrap">
           <button
             className={active === 'details' ? 'active' : ''}
@@ -66,7 +74,6 @@ const MyRecipeDetails = ({ deleteUserRecipe }) => {
           </ul>
         )}
         {active === 'recipe' && <div>{recipe.process}</div>}
-        <button onClick={() => deleteUserRecipe(recipeId)}>X</button>
       </div>
       {/* ) : null} */}
     </div>

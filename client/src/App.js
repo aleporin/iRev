@@ -25,6 +25,7 @@ import {
 import UserRecipe from './pages/UserRecipe'
 import SavedRecipes from './pages/SavedRecipes'
 import SavedRecipeDetails from './pages/SavedRecipeDetails'
+import EditRecipe from './components/EditRecipe'
 
 function App() {
   let navigate = useNavigate()
@@ -196,8 +197,10 @@ function App() {
 
   return (
     <div>
-      <Search authenticated={authenticated} user={user} logOut={logOut} />
+      {/* <Nav /> */}
       <div className="app">
+        <img src="https://i.imgur.com/emU62vZ.png" />
+        <Search authenticated={authenticated} user={user} logOut={logOut} />
         <Sidebar logOut={logOut} authenticated={authenticated} user={user} />
         <Routes>
           <Route
@@ -208,6 +211,19 @@ function App() {
           />
           <Route path="/" element={<Home />} />
           <Route path="/searched/:results" element={<SearchResults />} />
+          <Route
+            path="/editrecipe/:recipeId"
+            element={
+              <EditRecipe
+                updateUserRecipe={updateUserRecipe}
+                handleRecipeChange={handleRecipeChange}
+                recipeForm={recipeForm}
+                ingredient={ingredient}
+                handleIngredientAdd={handleIngredientAdd}
+                recipe={recipe}
+              />
+            }
+          />
           <Route
             path="/savedrecipes/:userid"
             element={
@@ -226,6 +242,7 @@ function App() {
                 savedRecipes={savedRecipes}
                 setSavedRecipes={setSavedRecipes}
                 deleteUserBookmarkedRecipe={deleteUserBookmarkedRecipe}
+                savedRecipe={savedRecipe}
               />
             }
           />

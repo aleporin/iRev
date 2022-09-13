@@ -7,7 +7,8 @@ const SavedRecipeDetails = ({
   // checkBookmark,
   savedRecipes,
   setSavedRecipes,
-  deleteUserBookmarkedRecipe
+  deleteUserBookmarkedRecipe,
+  savedRecipe
   // setUnBookmarked
 }) => {
   let { apiId, userId } = useParams()
@@ -33,6 +34,7 @@ const SavedRecipeDetails = ({
         <UnBookmark
           unBookmarked={unBookmarked}
           deleteUserBookmarkedRecipe={deleteUserBookmarkedRecipe}
+          savedRecipe={savedRecipe}
         />
       </div>
 
