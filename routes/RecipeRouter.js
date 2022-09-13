@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const controller = require('../controllers/RecipeController')
+const controller = require('../test/RecipeController')
 const middleware = require('../middleware')
 
 router.get(
