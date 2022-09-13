@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/aleporin/iRev#readme",
   "dependencies": {
-    "@splidejs/react-splide": "^0.7.8",
     "bcrypt": "^5.0.1",
     "cdbreact": "^1.5.3",
     "cors": "^2.8.5",
