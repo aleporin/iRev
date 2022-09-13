@@ -19,7 +19,7 @@ const Ingredient = ({
           value={ingredient}
           name="ingredient"
           type="text"
-          placeholder="Post a link to your recipe!"
+          placeholder="Add Ingredients!"
           className="recipe-field-input"
         />
         <button className="add-ingredient-button" onClick={handleIngredientAdd}>

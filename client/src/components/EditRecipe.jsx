@@ -6,20 +6,36 @@ import { GetRecipeById } from '../services/RecipeServices'
 const EditRecipe = ({
   handleRecipeSubmit,
   handleIngredientChange,
-  ingredient,
-  handleIngredientAdd,
+
   updateUserRecipe,
   user
 }) => {
   const [recipe, setRecipe] = useState({})
   const [active, setActive] = useState('details')
   const [editForm, setEditForm] = useState('')
+  const initialValue = ''
+  const [error, setError] = useState(null)
+
+  const [ingredient, setIngredient] = useState(initialValue)
 
   let { recipeId } = useParams()
 
   const getRecipes = async () => {
     const response = await GetRecipeById(editForm, recipeId)
     setEditForm(response[0])
+  }
+
+  const handleIngredientAdd = (e) => {
+    e.preventDefault()
+    let ingredients = recipe.ingredients
+    if (!editForm.ingredients.includes(ingredient)) {
+      editForm.ingredients.push(ingredient)
+      setEditForm({ ...editForm, ingredients: ingredients })
+      setError(null)
+    } else {
+      setError('That Ingredient is already on your list')
+    }
+    setIngredient(initialValue)
   }
 
   useEffect(() => {
@@ -31,10 +47,14 @@ const EditRecipe = ({
         process: recipe.process,
         cook_time: recipe.cook_time,
         image: recipe.image,
-        category: recipe.category
+        category: recipe.category,
+        ingredient: recipe.ingredient,
+        ingredients: recipe.ingredients
       })
     }
   }, [])
+
+  // const spliceIngredient = editForm.ingredients.splice(-1, 1)
 
   const handleChange = (e) => {
     setEditForm({ ...editForm, [e.target.name]: e.target.value })
@@ -108,6 +128,20 @@ const EditRecipe = ({
           <option type="dessert">Dessert</option>
           <option type="cocktail">Cocktail</option>
         </select>
+        <label className="recipe-field-label" htmlFor="ingredient">
+          Ingredient
+        </label>
+        <input
+          onChange={handleChange}
+          value={editForm.ingredient}
+          name="ingredient"
+          type="text"
+          placeholder="Add Ingredients!"
+          className="recipe-field-input"
+        />
+        <button className="add-ingredient-button" onClick={handleIngredientAdd}>
+          Add Ingredient
+        </button>
         <div>
           <div>
             <h2 className="ingredients-title">All Ingredients</h2>
@@ -118,7 +152,7 @@ const EditRecipe = ({
             ))}
           </div>
         </div>
-        <button className="submit-button">Submit Recipe</button>
+        <button className="submit-button">Edit Recipe</button>
       </form>
     </div>
   )
