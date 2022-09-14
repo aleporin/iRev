@@ -25,16 +25,16 @@ module.exports = (sequelize, DataTypes) => {
   }
   Recipe.init(
     {
-      image: { type: Sequelize.STRING(2000), allowNull: false },
-      recipe_name: { type: Sequelize.STRING(2000), allowNull: false },
-      desc: { type: Sequelize.STRING(2000), allowNull: false },
+      image: { type: DataTypes.STRING(2000), allowNull: false },
+      recipe_name: { type: DataTypes.STRING(2000), allowNull: false },
+      desc: { type: DataTypes.STRING(2000), allowNull: false },
       ingredients: {
-        type: DataTypes.ARRAY(Sequelize.STRING(2000)),
+        type: DataTypes.ARRAY(DataTypes.STRING(2000)),
         allowNull: false
       },
-      category: { type: Sequelize.STRING(2000), allowNull: false },
-      cook_time: { type: Sequelize.STRING(2000), allowNull: false },
-      process: { type: Sequelize.STRING(2000), allowNull: false },
+      category: { type: DataTypes.STRING(2000), allowNull: false },
+      cook_time: { type: DataTypes.STRING(2000), allowNull: false },
+      process: { type: DataTypes.STRING(2000), allowNull: false },
       userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
