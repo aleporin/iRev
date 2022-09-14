@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       },
       category: { type: DataTypes.STRING, allowNull: false },
-      cook_time: { type: DataTypes.INTEGER, allowNull: false },
+      cook_time: { type: DataTypes.STRING, allowNull: false },
       process: { type: DataTypes.STRING, allowNull: false },
       userId: {
         type: DataTypes.INTEGER,

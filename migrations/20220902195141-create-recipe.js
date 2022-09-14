@@ -29,7 +29,7 @@ module.exports = {
         allowNull: false
       },
       cook_time: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
       },
       process: {

@@ -8,7 +8,7 @@
 
 ---
 
-<!-- ![Logo]() -->
+![Logo]('')
 
 ### **_Description_**
 
@@ -30,7 +30,7 @@
 
 ####
 
-#### My deployed application can be viewed [Here].
+#### My deployed application can be viewed [Here](https://irev-fd5e2.web.app/).
 
 ---
 
