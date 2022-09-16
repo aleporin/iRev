@@ -10,7 +10,7 @@
 
 ### **_Description_**
 
-#### The overall goal of the project is to create a recipe app for food and cocktails. Users will be able to search through hundreds of food and cocktail recipes as well as create and interact with their own.
+#### The overall goal of the app is to create a recipe app for food and cocktails. Users will be able to search through hundreds of food and cocktail recipes as well as create and interact with their own.
 
 ---
 
